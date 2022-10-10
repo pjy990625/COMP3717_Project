@@ -20,10 +20,15 @@
         android:id="@+id/editTextAirportName"
         android:layout_width="270dp"
         android:layout_height="48dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="75dp"
         android:ems="10"
         android:hint="@string/hint"
         android:inputType="textPersonName"
         android:autofillHints="" />
+
+    <ListView
+        android:layout_width="270dp"
+        android:layout_height="400dp"
+        android:layout_marginStart="75dp" />
 
 </LinearLayout>
