@@ -33,4 +33,9 @@
         <item>Other</item>
     </string-array>
     <string name="services">Other Services:</string>
+    <string-array name="services">
+        <item>Car Rental</item>
+        <item>Hotels</item>
+        <item>Taxi</item>
+    </string-array>
 </resources>
