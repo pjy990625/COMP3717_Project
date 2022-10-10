@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemsMyRecyclerAdapter extends RecyclerView.Adapter<ItemsMyRecyclerAdapter.ItemsViewHolder>{
-    private Context c;
-    private String names[];
-    private int images[];
+    private final Context c;
+    private final String[] names;
+    private final int[] images;
     public ItemsMyRecyclerAdapter (Context c, String[] names, int[] images) {
         this.c = c;
         this.names = names;
@@ -40,7 +40,7 @@ public class ItemsMyRecyclerAdapter extends RecyclerView.Adapter<ItemsMyRecycler
         return images.length;
     }
 
-    public class ItemsViewHolder extends RecyclerView.ViewHolder {
+    public static class ItemsViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView icon;
         public ItemsViewHolder(@NonNull View itemView) {
