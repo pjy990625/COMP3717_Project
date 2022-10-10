@@ -62,10 +62,16 @@ public class Airport extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         itemNames = getResources().getStringArray(R.array.items);
-        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter = new ItemsMyRecyclerAdapter(this.getContext(),
+        serviceNames = getResources().getStringArray(R.array.services);
+        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter1 = new ItemsMyRecyclerAdapter(this.getContext(),
                 itemNames, dutyFreeIcons);
-        items.setAdapter(itemsMyRecyclerAdapter);
+        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter2 = new ItemsMyRecyclerAdapter(this.getContext(),
+                serviceNames, servicesIcons);
+        items.setAdapter(itemsMyRecyclerAdapter1);
         items.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        services.setAdapter(itemsMyRecyclerAdapter2);
+        services.setLayoutManager(new LinearLayoutManager(this.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
     }
 
