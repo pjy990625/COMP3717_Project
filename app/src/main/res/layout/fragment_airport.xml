@@ -68,4 +68,9 @@
         android:textColor="@color/black"
         android:text="@string/services" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewServices"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
 </LinearLayout>
