@@ -25,4 +25,6 @@
     <string name="placeholderLocation">AAA 111, BBB 222</string>
     <string name="speakTextRating">Rating bar</string>
     <string name="dutyFree">Duty free:</string>
+    <string name="iconDescription">Placeholder image</string>
+    <string name="placeholderName">Item</string>
 </resources>
