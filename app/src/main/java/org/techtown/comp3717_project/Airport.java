@@ -3,6 +3,7 @@ package org.techtown.comp3717_project;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -60,6 +61,11 @@ public class Airport extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        itemNames = getResources().getStringArray(R.array.items);
+        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter = new ItemsMyRecyclerAdapter(this.getContext(),
+                itemNames, dutyFreeIcons);
+        items.setAdapter(itemsMyRecyclerAdapter);
+        items.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
     @Override
