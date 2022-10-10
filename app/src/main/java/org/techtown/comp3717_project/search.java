@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -66,6 +67,14 @@ public class search extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(inflater.getContext(), android.R.layout.simple_list_item_1, names);
         ListView list = view.findViewById(R.id.list);
+        list.setOnItemClickListener((adapterView, view1, i, l) -> {
+            Airport airport = new Airport();
+            Bundle bundle = new Bundle();
+            bundle.putString("Airport", names[i]);
+            airport.setArguments(bundle);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_activity_service, airport).commit();
+        });
         list.setAdapter(adapter);
         return view;
     }
