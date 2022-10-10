@@ -65,7 +65,8 @@ public class Airport extends Fragment {
         ItemsMyRecyclerAdapter itemsMyRecyclerAdapter = new ItemsMyRecyclerAdapter(this.getContext(),
                 itemNames, dutyFreeIcons);
         items.setAdapter(itemsMyRecyclerAdapter);
-        items.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        items.setLayoutManager(new LinearLayoutManager(this.getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
     }
 
     @Override
