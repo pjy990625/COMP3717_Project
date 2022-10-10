@@ -24,4 +24,5 @@
     <string name="description">Airport Lounge</string>
     <string name="placeholderLocation">AAA 111, BBB 222</string>
     <string name="speakTextRating">Rating bar</string>
+    <string name="dutyFree">Duty free:</string>
 </resources>
