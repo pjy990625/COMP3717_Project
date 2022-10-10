@@ -9,4 +9,5 @@
     <string name="history">History</string>
     <string name="option">Options</string>
     <string name="select">Search for an airport</string>
+    <string name="hint">Airport Name</string>
 </resources>
