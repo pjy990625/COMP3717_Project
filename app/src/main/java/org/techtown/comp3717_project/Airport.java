@@ -39,14 +39,13 @@ public class Airport extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * @param name Parameter 1.
      * @return A new instance of fragment Airport.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Airport newInstance(String param1) {
+    public static Airport newInstance(String name) {
         Airport fragment = new Airport();
         Bundle args = new Bundle();
-        args.putString(NAME, param1);
+        args.putString(NAME, name);
         fragment.setArguments(args);
         return fragment;
     }
