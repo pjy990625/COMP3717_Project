@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".search">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textViewSearch"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:text="@string/select" />
+
+    <EditText
+        android:id="@+id/editTextAirportName"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="85dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+</LinearLayout>
