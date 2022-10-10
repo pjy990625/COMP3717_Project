@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".search">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Replace ListView with RecyclerView-->
     <TextView
         android:id="@+id/textViewSearch"
         android:layout_width="match_parent"
