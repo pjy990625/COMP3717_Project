@@ -3,6 +3,7 @@ package org.techtown.comp3717_project;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Airport extends Fragment {
+    RecyclerView items, services;
+    String[] itemNames, serviceNames;
+    int[] dutyFreeIcons = {R.drawable.ic_baseline_smoking_rooms_24,
+            R.drawable.ic_baseline_local_drink_24, R.drawable.ic_baseline_shopping_cart_24};
+    int[] servicesIcons = {R.drawable.ic_baseline_car_rental_24, R.drawable.ic_baseline_hotel_24,
+    R.drawable.ic_baseline_local_taxi_24};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
