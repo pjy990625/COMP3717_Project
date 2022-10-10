@@ -26,7 +26,7 @@ public class Airport extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String NAME = "name";
+    private static final String NAME = "AirPort";
 
     // TODO: Rename and change types of parameters
     private String name;
@@ -54,7 +54,7 @@ public class Airport extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            name = getArguments().getString(NAME);
+            name = getArguments().getString("Airport");
         }
     }
 
@@ -65,11 +65,13 @@ public class Airport extends Fragment {
         View view = inflater.inflate(R.layout.fragment_airport, container, false);
         TextView textView = view.findViewById(R.id.textViewAirportName);
         textView.setText(name);
+        items = view.findViewById(R.id.recyclerViewItems);
+        services = view.findViewById(R.id.recyclerViewServices);
         itemNames = getResources().getStringArray(R.array.items);
         serviceNames = getResources().getStringArray(R.array.services);
-        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter1 = new ItemsMyRecyclerAdapter(this.getContext(),
+        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter1 = new ItemsMyRecyclerAdapter(getActivity(),
                 itemNames, dutyFreeIcons);
-        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter2 = new ItemsMyRecyclerAdapter(this.getContext(),
+        ItemsMyRecyclerAdapter itemsMyRecyclerAdapter2 = new ItemsMyRecyclerAdapter(getActivity(),
                 serviceNames, servicesIcons);
         items.setAdapter(itemsMyRecyclerAdapter1);
         items.setLayoutManager(new LinearLayoutManager(this.getContext(),
