@@ -10,4 +10,12 @@
     <string name="option">Options</string>
     <string name="select">Search for an airport</string>
     <string name="hint">Airport Name</string>
+    <string-array name="airports">
+        <item>Some Airport</item>
+        <item>Another Airport</item>
+        <item>Yet Another Airport</item>
+        <item>Filler Airport</item>
+        <item>Insert Airport Name Here</item>
+        <item>Placeholder Name Airport</item>
+    </string-array>
 </resources>
