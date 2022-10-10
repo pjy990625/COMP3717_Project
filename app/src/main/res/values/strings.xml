@@ -20,4 +20,5 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="placeholder">Placeholder text here</string>
+    <string name="location">Location:</string>
 </resources>
