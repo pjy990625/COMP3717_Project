@@ -27,4 +27,9 @@
     <string name="dutyFree">Duty free:</string>
     <string name="iconDescription">Placeholder image</string>
     <string name="placeholderName">Item</string>
+    <string-array name="items">
+        <item>Cigarettes</item>
+        <item>Alcohol</item>
+        <item>Other</item>
+    </string-array>
 </resources>
