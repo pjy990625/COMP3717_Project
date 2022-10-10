@@ -22,4 +22,5 @@
     <string name="placeholder">Placeholder text here</string>
     <string name="location">Location:</string>
     <string name="description">Airport Lounge</string>
+    <string name="placeholderLocation">AAA 111, BBB 222</string>
 </resources>
