@@ -55,4 +55,9 @@
         android:textColor="@color/black"
         android:text="@string/dutyFree" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewItems"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
 </LinearLayout>
