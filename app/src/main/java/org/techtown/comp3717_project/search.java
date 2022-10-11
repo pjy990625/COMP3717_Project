@@ -1,5 +1,6 @@
 package org.techtown.comp3717_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -68,12 +69,11 @@ public class search extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(inflater.getContext(), android.R.layout.simple_list_item_1, names);
         ListView list = view.findViewById(R.id.list);
         list.setOnItemClickListener((adapterView, view1, i, l) -> {
-            Airport airport = new Airport();
+            Intent intent = new Intent(this.getContext(), InfoActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("Airport", names[i]);
-            airport.setArguments(bundle);
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment_activity_service, airport).commit();
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
         list.setAdapter(adapter);
         return view;
