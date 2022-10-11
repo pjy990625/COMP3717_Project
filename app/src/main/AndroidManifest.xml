@@ -14,7 +14,7 @@
         android:theme="@style/Theme.COMP3717_Project"
         tools:targetApi="31">
         <activity
-            android:name=".Info"
+            android:name=".InfoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
