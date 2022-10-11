@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".search">
+    tools:context=".ui.search.search">
 
     <!-- TODO: Replace ListView with RecyclerView-->
     <TextView

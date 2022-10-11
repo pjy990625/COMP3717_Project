@@ -4,17 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.techtown.comp3717_project.databinding.ActivityMainBinding;
 import org.techtown.comp3717_project.databinding.ActivityServiceBinding;
+import org.techtown.comp3717_project.ui.search.search;
 
 public class ServiceActivity extends AppCompatActivity {
 
