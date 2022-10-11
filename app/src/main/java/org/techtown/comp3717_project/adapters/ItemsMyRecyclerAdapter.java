@@ -1,15 +1,16 @@
-package org.techtown.comp3717_project;
+package org.techtown.comp3717_project.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.techtown.comp3717_project.R;
 
 public class ItemsMyRecyclerAdapter extends RecyclerView.Adapter<ItemsMyRecyclerAdapter.ItemsViewHolder>{
     private final Context c;

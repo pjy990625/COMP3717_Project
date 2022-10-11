@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
+
 public class InfoActivity extends AppCompatActivity {
     RecyclerView items, services;
     String[] itemNames, serviceNames;
