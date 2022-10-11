@@ -8,4 +8,34 @@
     <string name="service">Airport Services</string>
     <string name="history">History</string>
     <string name="option">Options</string>
+    <string name="select">Search for an airport</string>
+    <string name="hint">Airport Name</string>
+    <string-array name="airports">
+        <item>Some Airport</item>
+        <item>Another Airport</item>
+        <item>Yet Another Airport</item>
+        <item>Filler Airport</item>
+        <item>Insert Airport Name Here</item>
+        <item>Placeholder Name Airport</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="placeholder">Placeholder text here</string>
+    <string name="location">Location:</string>
+    <string name="description">Airport Lounge</string>
+    <string name="placeholderLocation">AAA 111, BBB 222</string>
+    <string name="speakTextRating">Rating bar</string>
+    <string name="dutyFree">Duty free:</string>
+    <string name="iconDescription">Placeholder image</string>
+    <string name="placeholderName">Item</string>
+    <string-array name="items">
+        <item>Cigarettes</item>
+        <item>Alcohol</item>
+        <item>Other</item>
+    </string-array>
+    <string name="services">Other Services:</string>
+    <string-array name="services">
+        <item>Car Rental</item>
+        <item>Hotels</item>
+        <item>Taxi</item>
+    </string-array>
 </resources>
