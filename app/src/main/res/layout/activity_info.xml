@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Airport">
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -31,13 +30,15 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="@string/location" />
+        android:text="@string/location"
+        android:layout_marginStart="30dp" />
 
     <TextView
         android:id="@+id/textViewLocationCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/placeholderLocation" />
+        android:text="@string/placeholderLocation"
+        android:layout_marginStart="30dp" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -52,13 +53,15 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="@string/dutyFree" />
+        android:text="@string/dutyFree"
+        android:layout_marginStart="30dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItems"
         android:scrollbars="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp" />
 
     <TextView
         android:id="@+id/textViewServices"
@@ -66,12 +69,14 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="@string/services" />
+        android:text="@string/services"
+        android:layout_marginStart="30dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewServices"
         android:scrollbars="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp" />
 
 </LinearLayout>

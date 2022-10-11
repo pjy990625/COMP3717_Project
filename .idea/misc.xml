@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_airport_info.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_airport_search.xml" value="0.165625" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_compare.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_info.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_service.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/card_layout.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_airport.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_notifications.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_search.xml" value="0.1796875" />
         <entry key="..\:/Users/pjy99/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_main.xml" value="0.276268115942029" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.1665" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
