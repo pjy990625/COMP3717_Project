@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.techtown.comp3717_project.CompareActivity;
 import org.techtown.comp3717_project.R;
 import org.techtown.comp3717_project.ServiceActivity;
 import org.techtown.comp3717_project.databinding.FragmentHomeBinding;
@@ -33,6 +34,11 @@ public class HomeFragment extends Fragment {
         Button services = root.findViewById(R.id.service);
         services.setOnClickListener((view1 -> {
             Intent intent = new Intent(this.getContext(), ServiceActivity.class);
+            startActivity(intent);
+        }));
+        Button compare = root.findViewById(R.id.compare);
+        compare.setOnClickListener((view1 -> {
+            Intent intent = new Intent(this.getContext(), CompareActivity.class);
             startActivity(intent);
         }));
         return root;
