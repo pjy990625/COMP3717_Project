@@ -14,6 +14,12 @@
         android:theme="@style/Theme.COMP3717Project"
         tools:targetApi="31">
         <activity
+            android:name=".TicketComparison"
+            android:exported="false" />
+        <activity
+            android:name=".TicketInfo"
+            android:exported="false" />
+        <activity
             android:name=".AirplaneServices"
             android:exported="false" />
         <activity
