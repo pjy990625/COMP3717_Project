@@ -38,4 +38,23 @@
         <item>Hotels</item>
         <item>Taxi</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="ticket_details">Ticket details page</string>
+    <string name="ticket_info">Your ticket is …</string>
+    <string name="ticket_price">than the average market price of $1000</string>
+    <string name="other_tickets">Other tickets with similar conditions</string>
+    <string name="submit">Submit</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="your_history">Your History</string>
 </resources>
