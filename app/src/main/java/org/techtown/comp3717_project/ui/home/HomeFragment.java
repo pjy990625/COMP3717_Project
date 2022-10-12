@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.techtown.comp3717_project.R;
+import org.techtown.comp3717_project.SearchActivity;
 import org.techtown.comp3717_project.ServiceActivity;
 import org.techtown.comp3717_project.databinding.FragmentHomeBinding;
 
@@ -32,7 +33,7 @@ public class HomeFragment extends Fragment {
         homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         Button services = root.findViewById(R.id.service);
         services.setOnClickListener((view1 -> {
-            Intent intent = new Intent(this.getContext(), ServiceActivity.class);
+            Intent intent = new Intent(this.getContext(), SearchActivity.class);
             startActivity(intent);
         }));
         return root;
