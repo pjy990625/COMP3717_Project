@@ -16,8 +16,10 @@
         android:theme="@style/Theme.COMP3717_Project"
         tools:targetApi="31">
         <activity
-            android:name=".SearchActivity"
             android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
             android:exported="false" />
         <activity
             android:name=".InfoActivity"
