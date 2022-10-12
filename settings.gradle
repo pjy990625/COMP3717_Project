@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "COMP 3717 Project"
+rootProject.name = "COMP3717_Project"
 include ':app'
