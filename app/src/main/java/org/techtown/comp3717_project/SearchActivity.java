@@ -74,6 +74,12 @@ public class SearchActivity extends AppCompatActivity {
 
         list.setOnItemClickListener((adapterView, view1, i, l) -> {
             Intent intent = new Intent(adapterView.getContext(), InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("Airport", locations[i].getName() + " ("
+                    + locations[i].getAddress().getCityCode() + ")");
+            bundle.putString("Location", locations[i].getAddress().getCityName() + ", " +
+                    locations[i].getAddress().getCountryName());
+            intent.putExtras(bundle);
             startActivity(intent);
         });
     }
