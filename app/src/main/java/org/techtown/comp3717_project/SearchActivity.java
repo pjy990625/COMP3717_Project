@@ -22,10 +22,16 @@ import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
+    Amadeus amadeus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        amadeus = Amadeus
+                .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+                .build();
 
         EditText input = findViewById(R.id.editTextAirportName);
         input.addTextChangedListener(new TextWatcher() {
@@ -44,7 +50,7 @@ public class SearchActivity extends AppCompatActivity {
                         TextView keyword = findViewById(R.id.editTextAirportName);
                         getAirports(keyword.getText().toString());
                     } catch (ResponseException e) {
-                        Log.d("Android", e.toString());
+                        Log.d("Amadeus", e.toString());
                     }
                 }
             }
@@ -59,10 +65,6 @@ public class SearchActivity extends AppCompatActivity {
         ListView list = findViewById(R.id.airportList);
         list.setAdapter(adapter);
 
-        Amadeus amadeus = Amadeus
-                .builder("Iu9SVX34tc0buGF2kFxlc7oqrwNuCOgm", "RTCIk2JroO3FIu0l")
-                .build();
-
         Location[] locations = amadeus.referenceData.locations.get(Params
                 .with("keyword", keyword)
                 .and("subType", "AIRPORT"));
@@ -74,6 +76,12 @@ public class SearchActivity extends AppCompatActivity {
 
         list.setOnItemClickListener((adapterView, view1, i, l) -> {
             Intent intent = new Intent(adapterView.getContext(), InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("Airport", locations[i].getName() + " ("
+                    + locations[i].getAddress().getCityCode() + ")");
+            bundle.putString("Location", locations[i].getAddress().getCityName() + ", " +
+                    locations[i].getAddress().getCountryName());
+            intent.putExtras(bundle);
             startActivity(intent);
         });
     }
