@@ -2,13 +2,10 @@ package org.techtown.comp3717_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
 import org.techtown.comp3717_project.databinding.ActivityServiceBinding;
-import org.techtown.comp3717_project.ui.search.search;
 
 public class ServiceActivity extends AppCompatActivity {
 

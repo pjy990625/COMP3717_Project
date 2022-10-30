@@ -4,13 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.search.search">
+    tools:context=".ui.search.SearchFragment">
 
-    <!-- TODO: Replace ListView with RecyclerView-->
     <TextView
         android:id="@+id/textViewSearch"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:textAlignment="center"
         android:textSize="30sp"

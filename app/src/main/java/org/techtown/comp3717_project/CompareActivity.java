@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.techtown.comp3717_project.ui.EnterTicketFragment;
-import org.techtown.comp3717_project.ui.ViewTicketFragment;
+import org.techtown.comp3717_project.ui.compare.EnterTicketFragment;
+import org.techtown.comp3717_project.ui.compare.ViewTicketFragment;
 
 public class CompareActivity extends AppCompatActivity {
 
