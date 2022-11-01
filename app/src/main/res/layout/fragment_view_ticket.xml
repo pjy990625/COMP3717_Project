@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:textSize="24sp"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/ticket_info" />
 
         <View
@@ -24,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/ticket_price" />
 
         <TextView
@@ -32,24 +34,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:textSize="18sp"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/other_tickets" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/a" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/b" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:textColor="?attr/colorOnPrimary"
             android:text="@string/c" />
 
 </LinearLayout>

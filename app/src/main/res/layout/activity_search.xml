@@ -15,7 +15,8 @@
         android:layout_marginBottom="50dp"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:text="@string/select" />
+        android:text="@string/select"
+        android:textColor="?attr/colorOnSecondary"/>
 
     <EditText
         android:id="@+id/editTextAirportName"
@@ -25,6 +26,8 @@
         android:ems="10"
         android:hint="@string/hint"
         android:inputType="textPersonName"
+        android:textColorHint="?attr/colorOnSecondary"
+        android:textColor="?attr/colorOnSecondary"
         android:autofillHints="" />
 
     <ListView

@@ -19,7 +19,8 @@
             android:layout_marginBottom="25dp"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:text="@string/placeholder" />
+            android:text="@string/placeholder"
+            android:textColor="?attr/colorOnSecondary"/>
 
         <ImageView
             android:id="@+id/imageView"
@@ -34,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/location"
             android:layout_marginStart="30dp" />
 
@@ -43,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placeholderLocation"
-            android:layout_marginStart="30dp" />
+            android:layout_marginStart="30dp"
+            android:textColor="?attr/colorOnSecondary"/>
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -57,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/dutyFree"
             android:layout_marginStart="30dp" />
 
@@ -73,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/services"
             android:layout_marginStart="30dp" />
 
@@ -83,15 +85,6 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="30dp" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="?android:attr/windowBackground"
-            app:menu="@menu/bottom_nav_menu" />
-
     </LinearLayout>
 
 

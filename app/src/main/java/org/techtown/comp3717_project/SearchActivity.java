@@ -3,6 +3,7 @@ package org.techtown.comp3717_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.Editable;
@@ -34,6 +35,7 @@ public class SearchActivity extends AppCompatActivity {
                 .build();
 
         EditText input = findViewById(R.id.editTextAirportName);
+        input.setTextColor(com.google.android.material.R.attr.colorOnSecondary);
         input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -48,6 +50,7 @@ public class SearchActivity extends AppCompatActivity {
                         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                         StrictMode.setThreadPolicy(policy);
                         TextView keyword = findViewById(R.id.editTextAirportName);
+                        keyword.setTextColor(com.google.android.material.R.attr.colorOnSecondary);
                         getAirports(keyword.getText().toString());
                     } catch (ResponseException e) {
                         Log.d("Amadeus", e.toString());
