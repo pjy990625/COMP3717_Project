@@ -1,4 +1,4 @@
-package org.techtown.comp3717project;
+package org.techtown.comp3717_project;
 
 import org.junit.Test;
 
