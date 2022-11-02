@@ -47,11 +47,7 @@ public class SearchActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(!s.toString().isEmpty()) {
                     try {
-                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-                        StrictMode.setThreadPolicy(policy);
-                        TextView keyword = findViewById(R.id.editTextAirportName);
-                        keyword.setTextColor(com.google.android.material.R.attr.colorOnSecondary);
-                        getAirports(keyword.getText().toString());
+                        getAirports(s.toString());
                     } catch (ResponseException e) {
                         Log.d("Amadeus", e.toString());
                     }
@@ -67,6 +63,9 @@ public class SearchActivity extends AppCompatActivity {
                 listItems);
         ListView list = findViewById(R.id.airportList);
         list.setAdapter(adapter);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         Location[] locations = amadeus.referenceData.locations.get(Params
                 .with("keyword", keyword)

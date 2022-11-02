@@ -2,13 +2,23 @@ package org.techtown.comp3717_project.ui.compare;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.amadeus.exceptions.ResponseException;
 
 import org.techtown.comp3717_project.CompareActivity;
 import org.techtown.comp3717_project.R;
@@ -28,12 +38,15 @@ public class EnterTicketFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    EditText departureInput;
+    EditText destinationInput;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public EnterTicketFragment() {
-        // Required empty public constructor
+        // Get a reference to the AutoCompleteTextView in the layout
     }
 
     /**
@@ -78,9 +91,17 @@ public class EnterTicketFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_enter_ticket, container, false);
-
+        departureInput = rootView.findViewById(R.id.departureAirport);
+        destinationInput = rootView.findViewById(R.id.destinationAirport);
         button = rootView.findViewById(R.id.submit);
-        button.setOnClickListener(v -> compareActivity.fragmentChange(2));
+        button.setOnClickListener(v -> {
+            try {
+                double price = Double.parseDouble(((EditText) rootView.findViewById(R.id.price)).getText().toString());
+                compareActivity.submitTravelInfo("MAD", "CDG", "2021-03-21", price, "CAD", false);
+            } catch (ResponseException e) {
+                Log.d("Amadeus", e.toString());
+            }
+        });
 
         return rootView;
     }
