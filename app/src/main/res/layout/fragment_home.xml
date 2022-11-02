@@ -45,7 +45,7 @@
             android:paddingTop="25dp"
             android:paddingBottom="5dp"
             android:drawableTop="@drawable/ic_baseline_attach_money_24"
-            app:tint="?attr/colorOnPrimary"
+            android:drawableTint="?attr/colorOnPrimary"
             android:text="@string/compare"
             app:cornerRadius="10dp" />
 
@@ -59,7 +59,7 @@
             android:paddingTop="25dp"
             android:paddingBottom="5dp"
             android:drawableTop="@drawable/ic_baseline_local_airport_24"
-            app:tint="?attr/colorOnPrimary"
+            android:drawableTint="?attr/colorOnPrimary"
             android:text="@string/service"
             app:cornerRadius="10dp" />
 
@@ -80,7 +80,7 @@
             android:paddingTop="25dp"
             android:paddingBottom="5dp"
             android:drawableTop="@drawable/ic_baseline_history_24"
-            app:tint="?attr/colorOnPrimary"
+            android:drawableTint="?attr/colorOnPrimary"
             android:text="@string/history"
             app:cornerRadius="10dp" />
 
@@ -94,7 +94,7 @@
             android:paddingTop="25dp"
             android:paddingBottom="5dp"
             android:drawableTop="@drawable/ic_baseline_settings_24"
-            app:tint="?attr/colorOnPrimary"
+            android:drawableTint="?attr/colorOnPrimary"
             android:text="@string/option"
             app:cornerRadius="10dp" />
 
