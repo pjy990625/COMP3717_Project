@@ -57,8 +57,8 @@
     <string name="dialog_main_message">Select the Airport you %1$s at</string>
     <string name="comparison_heading_message">Your ticket at %1$s is…</string>
     <string name="comparison_result_message">than the average market price of %1$s</string>
-    <string name="comparison_heading_error">Oops!</string>
-    <string name="comparison_result_error">We couldn\'t find data to compare your ticket price…</string>
+    <string name="comparison_heading_unknown">Oops!</string>
+    <string name="comparison_result_unknown">We couldn\'t find data to compare your ticket price…</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">cancel</string>
 

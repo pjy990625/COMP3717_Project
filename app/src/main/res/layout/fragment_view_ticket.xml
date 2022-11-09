@@ -16,10 +16,11 @@
             android:textColor="?attr/colorOnSecondary"
             android:text="@string/ticket_info" />
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
+        <ImageView
+            android:id="@+id/ticketComparisonResultImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Whether your ticket is cheaper or not" />
 
         <TextView
             android:id="@+id/ticketComparisonResultText"
