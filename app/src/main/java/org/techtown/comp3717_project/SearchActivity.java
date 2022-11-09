@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
@@ -101,7 +102,11 @@ public class SearchActivity extends AppCompatActivity {
             MapAsyncTask task = new MapAsyncTask();
             try {
                 List<Address> addresses = task.execute(locations[i].getIataCode() + " airport").get();
-                if (addresses.get(0).getSubThoroughfare() != null) {
+                if (addresses.size() == 0) {
+                    Toast.makeText(this, "Airport is either private or doesn't exist.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else if (addresses.get(0).getSubThoroughfare() != null) {
                     bundle.putString("Location", addresses.get(0).getSubThoroughfare() + " "
                             + addresses.get(0).getThoroughfare() + ", " +
                             addresses.get(0).getLocality() + ", " + addresses.get(0).getAdminArea()
@@ -130,6 +135,9 @@ public class SearchActivity extends AppCompatActivity {
                             bundle.putString("Location",
                                     addresses.get(0).getSubLocality() + ", " + addresses.get(0).getAdminArea()
                                     + ", " + addresses.get(0).getCountryName());
+                        } else {
+                            bundle.putString("Location", locations[i].getAddress().getCityName() + ", " +
+                                    locations[i].getAddress().getCountryName());
                         }
                     }
                 }
