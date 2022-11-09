@@ -13,10 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.techtown.comp3717_project.CompareActivity;
-import org.techtown.comp3717_project.HistoryActivity;
 import org.techtown.comp3717_project.R;
 import org.techtown.comp3717_project.SearchActivity;
-import org.techtown.comp3717_project.ServiceActivity;
 import org.techtown.comp3717_project.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -43,11 +41,11 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(this.getContext(), CompareActivity.class);
             startActivity(intent);
         }));
-        Button history = root.findViewById(R.id.history);
-        history.setOnClickListener((view1 -> {
-            Intent intent = new Intent(this.getContext(), HistoryActivity.class);
-            startActivity(intent);
-        }));
+//        Button history = root.findViewById(R.id.history);
+//        history.setOnClickListener((view1 -> {
+//            Intent intent = new Intent(this.getContext(), HistoryActivity.class);
+//            startActivity(intent);
+//        }));
         return root;
     }
 
