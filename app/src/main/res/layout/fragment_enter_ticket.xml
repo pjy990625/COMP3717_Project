@@ -47,13 +47,12 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
+    <Button
         android:id="@+id/departureAirport"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text=""
         android:textColor="?attr/colorOnSecondary" />
 
@@ -67,12 +66,11 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
+    <Button
         android:id="@+id/destinationAirport"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text=""
         android:textColor="?attr/colorOnSecondary"
         android:layout_gravity="center_horizontal" />
@@ -121,6 +119,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:text="@string/submit"
-        android:textColor="?attr/colorOnPrimary"/>
+        android:textColor="?attr/colorOnPrimary" />
 
 </LinearLayout>

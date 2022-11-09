@@ -10,14 +10,6 @@
     <string name="option">Options</string>
     <string name="select">Search for an airport</string>
     <string name="hint">Airport Name</string>
-    <string-array name="airports">
-        <item>Some Airport</item>
-        <item>Another Airport</item>
-        <item>Yet Another Airport</item>
-        <item>Filler Airport</item>
-        <item>Insert Airport Name Here</item>
-        <item>Placeholder Name Airport</item>
-    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="placeholder">Placeholder text here</string>
     <string name="location">Location:</string>
@@ -61,11 +53,13 @@
     </string-array>
     <string name="stops">Stops</string>
     <string name="your_history">Your History</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="dialog_main_message">Select an Airport</string>
+    <string name="dialog_main_message">Select the Airport you %1$s at</string>
     <string name="comparison_heading_message">Your ticket at %1$s is…</string>
     <string name="comparison_result_message">than the average market price of %1$s</string>
+    <string name="comparison_heading_error">Oops!</string>
+    <string name="comparison_result_error">We couldn\'t find data to compare your ticket price…</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">cancel</string>
 
 </resources>
