@@ -29,7 +29,7 @@ public class ViewTicketFragment extends Fragment {
         TextView resultText = rootView.findViewById(R.id.ticketComparisonResultText);
         ImageView resultImage = rootView.findViewById(R.id.ticketComparisonResultImage);
         Bundle bundle = getArguments();
-        // check if there were any data retrieved
+        // check whether isCheaper is unknown - if it is, that means there was no data retrieved from api
         if (bundle.getString("isCheaper").equals("unknown")) {
             headingText.setText(R.string.comparison_heading_unknown);
             resultText.setText(R.string.comparison_result_unknown);
