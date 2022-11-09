@@ -8,7 +8,7 @@
     tools:context=".ui.compare.EnterTicketFragment">
 
     <TextView
-        android:id="@+id/enteTicketTitle"
+        android:id="@+id/enterTicketTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_details_title"

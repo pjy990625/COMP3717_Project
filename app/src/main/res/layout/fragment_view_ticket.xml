@@ -8,6 +8,7 @@
     tools:context=".ui.compare.ViewTicketFragment">
 
         <TextView
+            android:id="@+id/ticketComparisonHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -21,12 +22,12 @@
             android:layout_height="150dp" />
 
         <TextView
-            android:id="@+id/resultText"
+            android:id="@+id/ticketComparisonResultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="?attr/colorOnSecondary"
-            android:text="@string/ticket_price" />
+            android:text="@string/comparison_result_message" />
 
         <TextView
             android:id="@+id/textView2"

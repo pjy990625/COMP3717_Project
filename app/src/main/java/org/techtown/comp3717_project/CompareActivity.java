@@ -21,8 +21,8 @@ import java.util.Arrays;
 
 public class CompareActivity extends AppCompatActivity {
 
-    private EnterTicketFragment fragmentEnter;
-    private ViewTicketFragment fragmentView;
+    private EnterTicketFragment fragmentEnterTicket;
+    private ViewTicketFragment fragmentViewTicket;
 
     Amadeus amadeus;
 
@@ -31,17 +31,16 @@ public class CompareActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
 
-        fragmentEnter = new EnterTicketFragment();
-        fragmentView = new ViewTicketFragment();
+        fragmentEnterTicket = new EnterTicketFragment();
+        fragmentViewTicket = new ViewTicketFragment();
 
         amadeus = Amadeus
                 .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
                 .build();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.ticket_fragment_frame,fragmentEnter);
-        fragmentTransaction.commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.ticket_fragment_frame,fragmentEnterTicket)
+                .commit();
     }
 
     public String[] getAirports(String keyword) throws ResponseException {
@@ -78,21 +77,23 @@ public class CompareActivity extends AppCompatActivity {
                 .and("oneWay", isOneWay ? "true" : "false"));
         double medium = Double.parseDouble(metrics[0].getPriceMetrics()[2].getAmount()); // get the medium average price from the result
         Bundle bundle = new Bundle(); // create bundle to send result to the fragment
+        bundle.putString("price", String.valueOf(price));
         bundle.putString("medium", String.valueOf(medium));
-        bundle.putString("howCheap", price < medium ? "true" : "false");
-        fragmentView.setArguments(bundle);
+        bundle.putString("isCheaper", price < medium ? "true" : "false");
+        fragmentViewTicket.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.ticket_fragment_frame, fragmentView).commit();
+                .replace(R.id.ticket_fragment_frame,fragmentViewTicket)
+                .commit();
     }
 
     public void fragmentChange(int index) throws ResponseException {
         if(index == 1) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, fragmentEnter).commit();
+                    .replace(R.id.ticket_fragment_frame, fragmentEnterTicket).commit();
         }
         else if(index == 2) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, fragmentView).commit();
+                    .replace(R.id.ticket_fragment_frame, fragmentViewTicket).commit();
         }
     }
 

@@ -61,4 +61,11 @@
     </string-array>
     <string name="stops">Stops</string>
     <string name="your_history">Your History</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="dialog_main_message">Select an Airport</string>
+    <string name="comparison_heading_message">Your ticket at %1$s is…</string>
+    <string name="comparison_result_message">than the average market price of %1$s</string>
+
 </resources>

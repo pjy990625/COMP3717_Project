@@ -102,7 +102,6 @@ public class EnterTicketFragment extends Fragment {
                 Log.d("Amadeus", e.toString());
             }
         });
-
         return rootView;
     }
 
