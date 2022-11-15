@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_airport_info.xml" value="0.1796875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_airport_search.xml" value="0.165625" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_compare.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_compare.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_history.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_info.xml" value="0.1796875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
@@ -13,6 +13,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/activity_service.xml" value="0.1796875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/card_layout.xml" value="0.1796875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_airport.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_airport_dialog.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_enter_ticket.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/COMP3717_Project/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />

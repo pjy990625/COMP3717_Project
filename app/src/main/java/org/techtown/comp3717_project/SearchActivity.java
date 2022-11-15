@@ -8,7 +8,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,8 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.amadeus.Amadeus;
-import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.google.android.gms.maps.model.LatLng;
@@ -33,23 +30,12 @@ import java.util.concurrent.ExecutionException;
 
 public class SearchActivity extends AppCompatActivity {
 
-    Amadeus amadeus;
     PlacesClient placesClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
-        amadeus = Amadeus
-                .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
-                .build();
-
-        // Initialize the SDK
-        Places.initialize(getApplicationContext(), BuildConfig.MAPS_API_KEY);
-
-        // Create a new PlacesClient instance
-        placesClient = Places.createClient(this);
 
         EditText input = findViewById(R.id.editTextAirportName);
         input.addTextChangedListener(new TextWatcher() {
@@ -61,12 +47,10 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(!s.toString().isEmpty()) {
+                String keyword = s.toString();
+                if(!keyword.isEmpty()) {
                     try {
-                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-                        StrictMode.setThreadPolicy(policy);
-                        TextView keyword = findViewById(R.id.editTextAirportName);
-                        getAirports(keyword.getText().toString());
+                        updateAirportList(AmadeusManager.getManager().getAirports(keyword));
                     } catch (ResponseException e) {
                         Log.d("Amadeus", e.toString());
                     } catch (ExecutionException | InterruptedException e) {
@@ -78,6 +62,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     void getAirports(String keyword) throws ResponseException, ExecutionException, InterruptedException {
+    void updateAirportList(Location[] locations) {
         ArrayList<String> listItems = new ArrayList<String>();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
@@ -85,12 +70,7 @@ public class SearchActivity extends AppCompatActivity {
         ListView list = findViewById(R.id.airportList);
         list.setAdapter(adapter);
 
-        Location[] locations = amadeus.referenceData.locations.get(Params
-                .with("keyword", keyword)
-                .and("subType", "AIRPORT"));
-
         for (Location location : locations) {
-            Log.d("Android", location.getName());
             adapter.add(location.getName());
         }
 

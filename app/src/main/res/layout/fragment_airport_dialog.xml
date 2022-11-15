@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.compare.AirportDialogFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/searchAirportLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select"
+        android:textAlignment="textStart"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/searchAirportInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/hint"
+        android:inputType="textPersonName"
+        android:textColorHint="?attr/colorOnSecondary"
+        android:textColor="?attr/colorOnSecondary"
+        android:autofillHints="" />
+
+    <ListView
+        android:id="@+id/searchAirportList"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/confirm"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text="@string/cancel"
+            android:layout_marginStart="20dp"
+            style="?android:attr/buttonBarButtonStyle" />
+
+    </LinearLayout>
+
+</LinearLayout>

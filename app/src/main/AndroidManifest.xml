@@ -35,6 +35,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".AirportInfo"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">

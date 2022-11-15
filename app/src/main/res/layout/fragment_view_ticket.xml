@@ -8,6 +8,7 @@
     tools:context=".ui.compare.ViewTicketFragment">
 
         <TextView
+            android:id="@+id/ticketComparisonHeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -15,18 +16,19 @@
             android:textColor="?attr/colorOnSecondary"
             android:text="@string/ticket_info" />
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
+        <ImageView
+            android:id="@+id/ticketComparisonResultImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Whether your ticket is cheaper or not" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/ticketComparisonResultText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="?attr/colorOnSecondary"
-            android:text="@string/ticket_price" />
+            android:text="@string/comparison_result_message" />
 
         <TextView
             android:id="@+id/textView2"
