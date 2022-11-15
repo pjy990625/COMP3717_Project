@@ -21,6 +21,8 @@ import org.techtown.comp3717_project.AmadeusManager;
 import org.techtown.comp3717_project.CompareActivity;
 import org.techtown.comp3717_project.R;
 
+import java.util.Locale;
+
 public class EnterTicketFragment extends Fragment {
 
     CompareActivity compareActivity;
@@ -112,7 +114,7 @@ public class EnterTicketFragment extends Fragment {
     }
 
     public void setDate(int year, int month, int day) {
-        date = year + "-" + month + "-" + day;
+        date = year + "-" + String.format(Locale.getDefault(), "%02d", month) + "-" + String.format(Locale.getDefault(), "%02d", day);
         button_date.setText(date);
     }
 }
