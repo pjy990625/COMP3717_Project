@@ -38,6 +38,25 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dateLabel"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/departureDate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary" />
+
+    <TextView
         android:id="@+id/departureLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,21 +95,38 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/classLabel"
+        android:id="@+id/currencyLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/class_label"
+        android:text="@string/currency_label"
         android:textSize="20sp"
         android:textColor="?attr/colorOnSecondary"
         android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal" />
 
     <Spinner
-        android:id="@+id/classSpinner"
+        android:id="@+id/currencySpinner"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:entries="@array/plane_classes"
+        android:entries="@array/currencies"
         android:layout_gravity="center_horizontal" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/classLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/class_label"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="?attr/colorOnSecondary"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_gravity="center_horizontal" />-->
+
+<!--    <Spinner-->
+<!--        android:id="@+id/classSpinner"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:entries="@array/plane_classes"-->
+<!--        android:layout_gravity="center_horizontal" />-->
 
 <!--    <TextView-->
 <!--        android:id="@+id/stopsLabel"-->

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,9 +27,13 @@ public class EnterTicketFragment extends Fragment {
 
     Button button_departure;
     Button button_destination;
+    Button button_date;
 
     String departureIATA = "";
     String destinationIATA = "";
+
+    String date = "";
+    String[] currency = {"USD", "CAD", "EUR", "JPY"}; // bound to strings/currencies - make sure the orders match
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,8 +65,14 @@ public class EnterTicketFragment extends Fragment {
         button_departure.setOnClickListener(v -> openAirportSelectionDialog(true));
         button_destination = rootView.findViewById(R.id.destinationAirport);
         button_destination.setOnClickListener(v -> openAirportSelectionDialog(false));
+        button_date = rootView.findViewById(R.id.departureDate);
+        button_date.setOnClickListener(v -> {
+            FlightDateDialogFragment flightDateDialogFragment = new FlightDateDialogFragment();
+            flightDateDialogFragment.show(getParentFragmentManager(), "datePicker");
+        });
         Button button_submit = rootView.findViewById(R.id.submit);
         button_submit.setOnClickListener(v -> {
+            // after verifying all inputs are valid, submit them to compareActivity so that it can initiate ticket comparison request
             if (departureIATA.isEmpty() || destinationIATA.isEmpty()) {
                 Toast.makeText(getActivity(),"Enter your departure and destination airports",Toast.LENGTH_SHORT).show();
                 return;
@@ -77,7 +88,8 @@ public class EnterTicketFragment extends Fragment {
             }
             try {
                 double price = Double.parseDouble(priceStr);
-                compareActivity.submitTravelInfo(price, AmadeusManager.getManager().getTicketPriceAnalysis(departureIATA, destinationIATA, "2021-03-21", price, "CAD", false));
+                Spinner currencySpinner = rootView.findViewById(R.id.currencySpinner);
+                compareActivity.submitTravelInfo(price, AmadeusManager.getManager().getTicketPriceAnalysis(departureIATA, destinationIATA, date, price, currency[currencySpinner.getSelectedItemPosition()], false));
             } catch (ResponseException e) {
                 Log.d("Amadeus", e.toString());
             }
@@ -99,4 +111,8 @@ public class EnterTicketFragment extends Fragment {
         }
     }
 
+    public void setDate(int year, int month, int day) {
+        date = year + "-" + month + "-" + day;
+        button_date.setText(date);
+    }
 }

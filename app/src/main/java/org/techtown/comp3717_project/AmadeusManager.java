@@ -1,6 +1,8 @@
 package org.techtown.comp3717_project;
 
+import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.util.Log;
 
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;

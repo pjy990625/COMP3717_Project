@@ -40,10 +40,18 @@
     <string name="b">B</string>
     <string name="c">C</string>
     <string name="enter_details_title">Enter your ticket details</string>
-    <string name="price">price</string>
+    <string name="price">Price</string>
+    <string name="dateLabel">Date of Departure:</string>
     <string name="departureLabel">Departure At:</string>
     <string name="destinationLabel">Destination At:</string>
     <string name="at">At:</string>
+    <string name="currency_label">Currency</string>
+    <string-array name="currencies">
+        <item>USD</item>
+        <item>CAD</item>
+        <item>Euro</item>
+        <item>Yen</item>
+    </string-array>
     <string name="class_label">Class</string>
     <string-array name="plane_classes">
         <item>First class</item>

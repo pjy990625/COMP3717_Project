@@ -19,6 +19,7 @@ android {
 
         buildConfigField "String", "API_KEY", "\"${properties.getProperty("API_KEY")}\""
         buildConfigField "String", "API_SECRET", "\"${properties.getProperty("API_SECRET")}\""
+        buildConfigField "String", "MAP_API_KEY", "\"${properties.getProperty("MAP_API_KEY")}\""
     }
 
     buildTypes {
