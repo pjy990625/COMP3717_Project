@@ -61,8 +61,7 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    void getAirports(String keyword) throws ResponseException, ExecutionException, InterruptedException {
-    void updateAirportList(Location[] locations) {
+    void updateAirportList(Location[] locations) throws ResponseException, ExecutionException, InterruptedException {
         ArrayList<String> listItems = new ArrayList<String>();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
