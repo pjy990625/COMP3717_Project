@@ -1,5 +1,6 @@
 package org.techtown.comp3717_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.StrictMode;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,17 +20,30 @@ import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import org.techtown.comp3717_project.ui.history.HistoryFragment;
+import org.techtown.comp3717_project.ui.home.HomeFragment;
+import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
     Amadeus amadeus;
+    BottomNavigationView bottomNavigationView;
+    HomeFragment homeFragment = new HomeFragment();
+    HistoryFragment historyFragment = new HistoryFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnItemSelectedListener(this);
 
         amadeus = Amadeus
                 .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
@@ -85,5 +100,23 @@ public class SearchActivity extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.search_container, homeFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.search_container, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.search_container, settingFragment).commit();
+            return true;
+        }
+        return false;
     }
 }
