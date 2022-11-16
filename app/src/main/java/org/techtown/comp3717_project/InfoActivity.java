@@ -1,16 +1,26 @@
 package org.techtown.comp3717_project;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
+import com.google.android.material.navigation.NavigationBarView;
 
-public class InfoActivity extends AppCompatActivity {
+import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
+import org.techtown.comp3717_project.ui.history.HistoryFragment;
+import org.techtown.comp3717_project.ui.setting.SettingFragment;
+
+public class InfoActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
+
+    HistoryFragment historyFragment = new HistoryFragment();
+    SettingFragment settingFragment = new SettingFragment();
+
     RecyclerView items, services;
     String[] itemNames, serviceNames;
     int[] dutyFreeIcons = {R.drawable.ic_baseline_smoking_rooms_24,
@@ -45,4 +55,23 @@ public class InfoActivity extends AppCompatActivity {
         services.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, settingFragment).commit();
+            return true;
+        }
+        return false;
+    }
+
 }
