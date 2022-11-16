@@ -1,5 +1,6 @@
 package org.techtown.comp3717_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -14,7 +15,6 @@ import com.google.android.material.navigation.NavigationBarView;
 import org.techtown.comp3717_project.ui.compare.EnterTicketFragment;
 import org.techtown.comp3717_project.ui.compare.ViewTicketFragment;
 import org.techtown.comp3717_project.ui.history.HistoryFragment;
-import org.techtown.comp3717_project.ui.home.HomeFragment;
 import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
 public class CompareActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
@@ -23,7 +23,6 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
     private ViewTicketFragment fragmentView;
 
     BottomNavigationView bottomNavigationView;
-    HomeFragment homeFragment = new HomeFragment();
     HistoryFragment historyFragment = new HistoryFragment();
     SettingFragment settingFragment = new SettingFragment();
 
@@ -58,8 +57,8 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.navigation_home) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, homeFragment).commit();
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
             return true;
         } else if (item.getItemId() == R.id.navigation_history) {
             getSupportFragmentManager().beginTransaction()

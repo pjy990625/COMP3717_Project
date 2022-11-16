@@ -105,8 +105,8 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.navigation_home) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.search_container, homeFragment).commit();
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
             return true;
         } else if (item.getItemId() == R.id.navigation_history) {
             getSupportFragmentManager().beginTransaction()
