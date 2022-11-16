@@ -1,25 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.EnterTicketFragment">
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    tools:context=".ui.compare.EnterTicketFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/ticket_details" />
+        android:id="@+id/enterTicketTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_details_title"
+        android:textSize="25sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/dateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dateLabel"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/departureDate"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary" />
+
+    <TextView
+        android:id="@+id/departureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/departureLabel"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/departureAirport"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:text=""
+        android:textColor="?attr/colorOnSecondary" />
+
+    <TextView
+        android:id="@+id/destinationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/destinationLabel"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/destinationAirport"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text=""
+        android:textColorHint="?attr/colorOnSecondary"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/currencyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currency_label"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:id="@+id/currencySpinner"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:entries="@array/currencies"
+        android:layout_gravity="center_horizontal" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/classLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/class_label"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="?attr/colorOnSecondary"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_gravity="center_horizontal" />-->
+
+<!--    <Spinner-->
+<!--        android:id="@+id/classSpinner"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:entries="@array/plane_classes"-->
+<!--        android:layout_gravity="center_horizontal" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/stopsLabel"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/stops"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="?attr/colorOnSecondary"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginStart="60dp"/>-->
+
+<!--    <Button-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:padding="0dp"-->
+<!--        android:text="+"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="?attr/colorOnPrimary"-->
+<!--        android:layout_marginEnd="20dp"/>-->
 
     <Button
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_marginTop="580dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/submit"
-        tools:layout_editor_absoluteX="268dp"
-        tools:layout_editor_absoluteY="603dp" />
+        android:textColor="?attr/colorOnPrimary" />
 
-</FrameLayout>
+</LinearLayout>

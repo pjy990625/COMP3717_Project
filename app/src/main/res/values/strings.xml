@@ -1,23 +1,13 @@
 <resources>
     <string name="app_name">SaveAir</string>
     <string name="home">Home</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="notifications">Notifications</string>
     <string name="welcome">Welcome, User</string>
     <string name="compare">Compare Prices</string>
     <string name="service">Airport Services</string>
     <string name="history">History</string>
-    <string name="option">Options</string>
+    <string name="option">Settings</string>
     <string name="select">Search for an airport</string>
     <string name="hint">Airport Name</string>
-    <string-array name="airports">
-        <item>Some Airport</item>
-        <item>Another Airport</item>
-        <item>Yet Another Airport</item>
-        <item>Filler Airport</item>
-        <item>Insert Airport Name Here</item>
-        <item>Placeholder Name Airport</item>
-    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="placeholder">Placeholder text here</string>
     <string name="location">Location:</string>
@@ -47,4 +37,35 @@
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>
+    <string name="enter_details_title">Enter your ticket details</string>
+    <string name="price">Price</string>
+    <string name="dateLabel">Date of Departure:</string>
+    <string name="departureLabel">Departure At:</string>
+    <string name="destinationLabel">Destination At:</string>
+    <string name="at">At:</string>
+    <string name="currency_label">Currency</string>
+    <string-array name="currencies">
+        <item>USD</item>
+        <item>CAD</item>
+        <item>Euro</item>
+        <item>Yen</item>
+    </string-array>
+    <string name="class_label">Class</string>
+    <string-array name="plane_classes">
+        <item>First class</item>
+        <item>Business class</item>
+        <item>Premium economy</item>
+        <item>Economy class</item>
+    </string-array>
+    <string name="stops">Stops</string>
+    <string name="your_history">Your History</string>
+
+    <string name="dialog_main_message">Select the Airport you %1$s at</string>
+    <string name="comparison_heading_message">Your ticket at %1$s is…</string>
+    <string name="comparison_result_message">than the average market price of %1$s</string>
+    <string name="comparison_heading_unknown">Oops!</string>
+    <string name="comparison_result_unknown">We couldn\'t find data to compare your ticket price…</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">cancel</string>
+
 </resources>

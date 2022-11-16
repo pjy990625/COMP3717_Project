@@ -2,13 +2,10 @@ package org.techtown.comp3717_project;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
 import org.techtown.comp3717_project.databinding.ActivityServiceBinding;
-import org.techtown.comp3717_project.ui.search.search;
 
 public class ServiceActivity extends AppCompatActivity {
 
@@ -18,10 +15,10 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
-        search search = new search();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.nav_host_fragment_activity_service, search).commit();
+//        search search = new search();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.nav_host_fragment_activity_service, search).commit();
 //        binding = ActivityServiceBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());
 //

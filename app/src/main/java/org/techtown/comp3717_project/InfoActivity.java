@@ -24,8 +24,11 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String airportName = bundle.getString("Airport");
+        String airportLocation = bundle.getString("Location");
         TextView name = findViewById(R.id.textViewAirportName);
         name.setText(airportName);
+        TextView location = findViewById(R.id.textViewLocationCode);
+        location.setText(airportLocation);
         items = findViewById(R.id.recyclerViewItems);
         services = findViewById(R.id.recyclerViewServices);
         itemNames = getResources().getStringArray(R.array.items);
