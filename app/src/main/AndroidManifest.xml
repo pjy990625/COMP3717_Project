@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.techtown.comp3717_project">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,20 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP3717_Project"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
         <activity
-<<<<<<< HEAD
-            android:name=".TicketComparison"
-            android:exported="false" />
-        <activity
-            android:name=".TicketInfo"
-            android:exported="false" />
-        <activity
-            android:name=".AirplaneServices"
-            android:exported="false" />
-=======
             android:name=".InfoActivity"
-            android:exported="false">
+            android:exported="false"
+            android:parentActivityName=".ServiceActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -37,7 +31,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
->>>>>>> main
         <activity
             android:name=".MainActivity"
             android:exported="true"
