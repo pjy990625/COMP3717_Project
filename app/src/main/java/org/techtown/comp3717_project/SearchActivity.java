@@ -19,9 +19,17 @@ import android.widget.Toast;
 
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +39,7 @@ import java.util.concurrent.ExecutionException;
 public class SearchActivity extends AppCompatActivity {
 
     PlacesClient placesClient;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +129,12 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     }
                 }
+                url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+                        + addresses.get(0).getLatitude() + ", " + addresses.get(0).getLongitude()
+                        + "&key=" + BuildConfig.MAPS_API_KEY;
+                PhotoAsyncTask task2 = new PhotoAsyncTask();
+                task2.execute(url);
+                intent.putExtras(bundle);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
@@ -139,6 +154,26 @@ public class SearchActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return addresses;
+        }
+    }
+    class PhotoAsyncTask extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            RequestQueue queue = Volley.newRequestQueue(SearchActivity.this);
+            final String[] placeID = {new String()};
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, (Response.Listener<JSONObject>) response -> {
+                try {
+                    JSONArray jsonArrayResults = response.getJSONArray("results");
+                    JSONObject jsonObjectResults = jsonArrayResults.getJSONObject(0);
+                    placeID[0] = jsonObjectResults.getString("place_id");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }, error -> {
+                Toast.makeText(SearchActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+            });
+            queue.add(request);
+            return placeID[0];
         }
     }
 }
