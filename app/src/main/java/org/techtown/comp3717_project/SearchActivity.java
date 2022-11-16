@@ -3,7 +3,6 @@ package org.techtown.comp3717_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -14,13 +13,11 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
 import java.io.IOException;
