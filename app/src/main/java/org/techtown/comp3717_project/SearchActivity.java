@@ -169,9 +169,7 @@ public class SearchActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }, error -> {
-                Toast.makeText(SearchActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
-            });
+            }, error -> Toast.makeText(SearchActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
             queue.add(request);
             return placeID[0];
         }
