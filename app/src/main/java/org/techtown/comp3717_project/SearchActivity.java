@@ -160,7 +160,7 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             RequestQueue queue = Volley.newRequestQueue(SearchActivity.this);
-            final String[] placeID = {new String()};
+            final String[] placeID = {""};
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, (Response.Listener<JSONObject>) response -> {
                 try {
                     JSONArray jsonArrayResults = response.getJSONArray("results");
