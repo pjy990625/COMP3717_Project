@@ -30,6 +30,16 @@
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1165" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.238" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/drawable/rounded_corners.xml" value="0.1" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_compare.xml" value="0.1" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_info.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_main.xml" value="0.286231884057971" />
+        <entry key="app/src/main/res/layout/activity_airplane_services.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_ticket_comparison.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/activity_ticket_info.xml" value="0.28229166666666666" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_service.xml" value="0.286231884057971" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/card_layout.xml" value="0.20425724637681159" />
+        <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/fragment_airport.xml" value="0.12318840579710146" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_compare.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_history.xml" value="0.1" />
         <entry key="..\:/Users/pjy99/COMP3717_Project/app/src/main/res/layout/activity_info.xml" value="0.20186335403726707" />
