@@ -1,5 +1,7 @@
 package org.techtown.comp3717_project;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -26,6 +28,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.PhotoMetadata;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
 import org.json.JSONArray;
@@ -33,6 +38,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -133,8 +139,8 @@ public class SearchActivity extends AppCompatActivity {
                         + addresses.get(0).getLatitude() + ", " + addresses.get(0).getLongitude()
                         + "&key=" + BuildConfig.MAPS_API_KEY;
                 PhotoAsyncTask task2 = new PhotoAsyncTask();
-                task2.execute(url);
-                intent.putExtras(bundle);
+                String photoID = task2.execute(url).get();
+                bundle.putString("placeID", photoID);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
