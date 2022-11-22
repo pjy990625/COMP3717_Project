@@ -20,6 +20,7 @@ import java.util.Currency;
 
 public class CompareActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
+
     private EnterTicketFragment fragmentEnterTicket;
     private ViewTicketFragment fragmentViewTicket;
     BottomNavigationView bottomNavigationView;

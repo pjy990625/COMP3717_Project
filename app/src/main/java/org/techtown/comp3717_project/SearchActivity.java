@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.google.android.gms.maps.model.LatLng;
@@ -36,6 +37,7 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
 
     PlacesClient placesClient;
     BottomNavigationView bottomNavigationView;
+    Amadeus amadeus;
     HistoryFragment historyFragment = new HistoryFragment();
     SettingFragment settingFragment = new SettingFragment();
 
@@ -46,6 +48,10 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
 
         bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setOnItemSelectedListener(this);
+
+        amadeus = Amadeus
+                .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+                .build();
 
         EditText input = findViewById(R.id.editTextAirportName);
         input.addTextChangedListener(new TextWatcher() {
@@ -169,4 +175,5 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
         }
         return false;
     }
+
 }
