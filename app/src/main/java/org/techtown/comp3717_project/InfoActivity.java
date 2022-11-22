@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.AsyncQueryHandler;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.google.android.libraries.places.api.net.PlacesClient;
 
 import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
 
 public class InfoActivity extends AppCompatActivity {
+    PlacesClient placesClient;
     RecyclerView items, services;
     String[] itemNames, serviceNames;
     int[] dutyFreeIcons = {R.drawable.ic_baseline_smoking_rooms_24,
@@ -43,5 +48,13 @@ public class InfoActivity extends AppCompatActivity {
         services.setAdapter(itemsMyRecyclerAdapter2);
         services.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    class PhotoAsyncTask extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
     }
 }
