@@ -17,6 +17,7 @@ public class InfoActivity extends AppCompatActivity {
             R.drawable.ic_baseline_local_drink_24, R.drawable.ic_baseline_shopping_cart_24};
     int[] servicesIcons = {R.drawable.ic_baseline_car_rental_24, R.drawable.ic_baseline_hotel_24,
             R.drawable.ic_baseline_local_taxi_24};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

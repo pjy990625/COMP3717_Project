@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import org.techtown.comp3717_project.ui.history.HistoryFragment;
 import org.techtown.comp3717_project.ui.home.HomeFragment;
 import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
     private ActivityMainBinding binding;
 
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         //NavigationUI.setupWithNavController(binding.navView, navController);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
     }

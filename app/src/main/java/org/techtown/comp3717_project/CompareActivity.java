@@ -1,26 +1,38 @@
 package org.techtown.comp3717_project;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.ItineraryPriceMetric;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.techtown.comp3717_project.ui.compare.EnterTicketFragment;
 import org.techtown.comp3717_project.ui.compare.ViewTicketFragment;
+import org.techtown.comp3717_project.ui.history.HistoryFragment;
+import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
 import java.util.Currency;
 
-public class CompareActivity extends AppCompatActivity {
+public class CompareActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 
     private EnterTicketFragment fragmentEnterTicket;
     private ViewTicketFragment fragmentViewTicket;
+    BottomNavigationView bottomNavigationView;
+    HistoryFragment historyFragment = new HistoryFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compare);
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnItemSelectedListener(this);
 
         fragmentEnterTicket = new EnterTicketFragment();
         fragmentViewTicket = new ViewTicketFragment();
@@ -50,6 +62,24 @@ public class CompareActivity extends AppCompatActivity {
 
     public EnterTicketFragment getEnterTicketFragment() {
         return fragmentEnterTicket;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, settingFragment).commit();
+            return true;
+        }
+        return false;
     }
 
 }
