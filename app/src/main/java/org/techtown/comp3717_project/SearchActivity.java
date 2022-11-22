@@ -43,8 +43,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class SearchActivity extends AppCompatActivity {
-
-    PlacesClient placesClient;
     String url;
 
     @Override
