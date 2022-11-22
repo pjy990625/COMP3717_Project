@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
 import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
@@ -24,6 +25,8 @@ public class InfoActivity extends AppCompatActivity {
             R.drawable.ic_baseline_local_taxi_24};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Places.initialize(this, BuildConfig.MAPS_API_KEY);
+        placesClient = Places.createClient(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         Intent intent = getIntent();
