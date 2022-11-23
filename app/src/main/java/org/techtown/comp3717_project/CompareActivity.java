@@ -3,12 +3,15 @@ package org.techtown.comp3717_project;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.ItineraryPriceMetric;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.techtown.comp3717_project.ui.compare.EnterTicketFragment;
 import org.techtown.comp3717_project.ui.compare.ViewTicketFragment;
 
@@ -44,11 +47,12 @@ public class CompareActivity extends AppCompatActivity {
             bundle.putString("isCheaper", "unknown"); // if no result is retrieved then it means no data was found
         } else {
             double medium = Double.parseDouble(results[0].getPriceMetrics()[2].getAmount()); // get the medium average price from the result
-            bundle.putString("price", String.valueOf(price));
-            bundle.putString("medium", String.valueOf(medium));
+            String currency = Currency.getInstance(results[0].getCurrencyCode()).getSymbol();
+            bundle.putString("price", currency + price);
+            bundle.putString("medium", currency + medium);
             bundle.putString("isCheaper", price < medium ? "true" : "false");
-            bundle.putString("currency", Currency.getInstance(results[0].getCurrencyCode()).getSymbol()); // extract and convert the currency code to currency symbol
-            saveTicketResult(results[0]);
+            bundle.putString("currency", currency); // extract and convert the currency code to currency symbol
+            saveTicketResult(price, medium, currency);
         }
 
         fragmentViewTicket.setArguments(bundle);
@@ -61,12 +65,20 @@ public class CompareActivity extends AppCompatActivity {
         return fragmentEnterTicket;
     }
 
-    void saveTicketResult(ItineraryPriceMetric result) {
+    void saveTicketResult(double price, double medium, String currency) {
         SharedPreferences prefs = getSharedPreferences("history", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Set<String> historySet = prefs.getStringSet("history", new HashSet<>());
         ArrayList<String> historyList = new ArrayList<>(historySet); // convert Set to ArrayList
-        historyList.add(result.toString());
+        try {
+            JSONObject json = new JSONObject();
+            json.put("price", currency + price);
+            json.put("medium", currency + medium);
+            json.put("isCheaper", price < medium ? "cheaper" : "not cheaper");
+            historyList.add(json.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         while (historyList.size() > MAX_HISTORY) historyList.remove(0); // if 10+ records, delete the oldest (first)
         editor.putStringSet("history", new HashSet<>(historyList)); // convert back to Set and save
         editor.apply();

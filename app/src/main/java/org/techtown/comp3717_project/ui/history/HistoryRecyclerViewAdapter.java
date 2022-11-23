@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.techtown.comp3717_project.R;
 
 import java.util.ArrayList;
@@ -34,7 +37,12 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
 
     @Override
     public void onBindViewHolder(@NonNull HistoryRecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.textView_content.setText(items.get(position));
+        try {
+            JSONObject json = new JSONObject(items.get(position));
+            holder.textView_content.setText(R.string.history_template));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

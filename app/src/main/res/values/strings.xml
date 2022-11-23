@@ -69,4 +69,6 @@
     <string name="cancel">cancel</string>
     <string name="preference_file_key">SaveAir</string>
 
+    <string name="history_template">Your ticket at %1$s was %2$s than the average market price of %3$s.</string>
+
 </resources>
