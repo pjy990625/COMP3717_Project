@@ -48,6 +48,7 @@
         <item>USD</item>
         <item>CAD</item>
         <item>Euro</item>
+        <item>Yuan</item>
         <item>Yen</item>
     </string-array>
     <string name="class_label">Class</string>

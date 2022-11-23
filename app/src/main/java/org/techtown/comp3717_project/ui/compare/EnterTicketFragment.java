@@ -34,7 +34,7 @@ public class EnterTicketFragment extends Fragment {
     String destinationIATA = "";
 
     String date = "";
-    String[] currency = {"USD", "CAD", "EUR", "JPY"}; // bound to strings/currencies - make sure the orders match
+    String[] currency = {"USD", "CAD", "EUR", "CNY", "JPY"}; // bound to strings/currencies - make sure the orders match
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
