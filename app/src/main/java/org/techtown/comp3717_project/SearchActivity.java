@@ -136,9 +136,7 @@ public class SearchActivity extends AppCompatActivity {
                 url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
                         + addresses.get(0).getLatitude() + ", " + addresses.get(0).getLongitude()
                         + "&key=" + BuildConfig.MAPS_API_KEY;
-                PhotoAsyncTask task2 = new PhotoAsyncTask();
-                String photoID = task2.execute(url).get();
-                bundle.putString("placeID", photoID);
+                bundle.putString("url", url);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
@@ -158,24 +156,6 @@ public class SearchActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             return addresses;
-        }
-    }
-    class PhotoAsyncTask extends AsyncTask<String, String, String> {
-        @Override
-        protected String doInBackground(String... strings) {
-            RequestQueue queue = Volley.newRequestQueue(SearchActivity.this);
-            final String[] placeID = {""};
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, (Response.Listener<JSONObject>) response -> {
-                try {
-                    JSONArray jsonArrayResults = response.getJSONArray("results");
-                    JSONObject jsonObjectResults = jsonArrayResults.getJSONObject(0);
-                    placeID[0] = jsonObjectResults.getString("place_id");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }, error -> Toast.makeText(SearchActivity.this, error.toString(), Toast.LENGTH_SHORT).show());
-            queue.add(request);
-            return placeID[0];
         }
     }
 }
