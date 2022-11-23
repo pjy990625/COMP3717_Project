@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.service.controls.ControlsProviderService;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -111,10 +112,27 @@ public class InfoActivity extends AppCompatActivity {
                 })).addOnFailureListener((e -> {
                     if (e instanceof ApiException) {
                         final ApiException exception = (ApiException) e;
-                        Log.e(TAG, "Place not found: " + e.getMessage());
+                        Log.e(TAG, "Place not found: " + exception.getMessage());
                     }
                 }));
             }));
+            final List<Place.Field> fields1 = Collections.singletonList(Place.Field.RATING);
+            final FetchPlaceRequest placeRequest1 = FetchPlaceRequest.newInstance(placeID[0], fields1);
+            placesClient.fetchPlace(placeRequest1).addOnSuccessListener(fetchPlaceResponse -> {
+                final Place place = fetchPlaceResponse.getPlace();
+                try {
+                    final double rating = place.getRating();
+                    RatingBar ratingBar = findViewById(R.id.ratingBar);
+                    ratingBar.setRating((float) rating);
+                } catch (Exception e) {
+                    Log.e(TAG, e.getMessage());
+                }
+            }).addOnFailureListener(e -> {
+                if (e instanceof ApiException) {
+                    final ApiException exception = (ApiException) e;
+                    Log.e(TAG, "Place not found: " + exception.getMessage());
+                }
+            });
             }, error -> Log.e(TAG, error.toString()));
             queue.add(request);
             return "Task Completed";
