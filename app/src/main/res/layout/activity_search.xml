@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/search_container"
-    tools:context=".ui.search.SearchFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView

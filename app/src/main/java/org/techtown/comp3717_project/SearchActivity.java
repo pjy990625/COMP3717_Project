@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -166,11 +167,11 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
             return true;
         } else if (item.getItemId() == R.id.navigation_history) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, historyFragment).commit();
+                    .replace(R.id.search_container, historyFragment).commit();
             return true;
         } else if (item.getItemId() == R.id.navigation_setting) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, settingFragment).commit();
+                    .replace(R.id.search_container, settingFragment).commit();
             return true;
         }
         return false;

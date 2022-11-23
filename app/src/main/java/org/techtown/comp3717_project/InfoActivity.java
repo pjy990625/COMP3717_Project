@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
@@ -20,6 +21,7 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
 
     HistoryFragment historyFragment = new HistoryFragment();
     SettingFragment settingFragment = new SettingFragment();
+    BottomNavigationView bottomNavigationView;
 
     RecyclerView items, services;
     String[] itemNames, serviceNames;
@@ -32,6 +34,10 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnItemSelectedListener(this);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String airportName = bundle.getString("Airport");
@@ -64,11 +70,11 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
             return true;
         } else if (item.getItemId() == R.id.navigation_history) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, historyFragment).commit();
+                    .replace(R.id.info_container, historyFragment).commit();
             return true;
         } else if (item.getItemId() == R.id.navigation_setting) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.ticket_fragment_frame, settingFragment).commit();
+                    .replace(R.id.info_container, settingFragment).commit();
             return true;
         }
         return false;
