@@ -33,7 +33,7 @@ public class FlightDateDialogFragment extends DialogFragment implements DatePick
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        compareActivity.getEnterTicketFragment().setDate(year, month, day);
+        compareActivity.getEnterTicketFragment().setDate(year, month + 1, day);
         dismiss();
     }
 
