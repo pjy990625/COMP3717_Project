@@ -25,6 +25,10 @@ public class CompareActivity extends AppCompatActivity {
     private EnterTicketFragment fragmentEnterTicket;
     private ViewTicketFragment fragmentViewTicket;
 
+    String departure_name;
+    String destination_name;
+    String flight_date;
+
     final int MAX_HISTORY = 10; // maximum number of records
 
     @Override
@@ -48,8 +52,8 @@ public class CompareActivity extends AppCompatActivity {
         } else {
             double medium = Double.parseDouble(results[0].getPriceMetrics()[2].getAmount()); // get the medium average price from the result
             String currency = Currency.getInstance(results[0].getCurrencyCode()).getSymbol();
-            bundle.putString("price", currency + price);
-            bundle.putString("medium", currency + medium);
+            bundle.putString("price", String.valueOf(price));
+            bundle.putString("medium", String.valueOf(medium));
             bundle.putString("isCheaper", price < medium ? "true" : "false");
             bundle.putString("currency", currency); // extract and convert the currency code to currency symbol
             saveTicketResult(price, medium, currency);
@@ -72,15 +76,29 @@ public class CompareActivity extends AppCompatActivity {
         ArrayList<String> historyList = new ArrayList<>(historySet); // convert Set to ArrayList
         try {
             JSONObject json = new JSONObject();
-            json.put("price", currency + price);
-            json.put("medium", currency + medium);
-            json.put("isCheaper", price < medium ? "cheaper" : "not cheaper");
+            json.put("ticketPrice", "Your ticket: " + currency + price);
+            json.put("marketPrice", "Market price: " + currency + medium);
+            json.put("departure", "Departure: " + departure_name);
+            json.put("destination", "Destination: " + destination_name);
+            json.put("date", "Date: " + flight_date);
             historyList.add(json.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
         while (historyList.size() > MAX_HISTORY) historyList.remove(0); // if 10+ records, delete the oldest (first)
-        editor.putStringSet("history", new HashSet<>(historyList)); // convert back to Set and save
+        editor.putStringSet("history", new HashSet<>(historyList)); // convert back to a Set and save
         editor.apply();
+    }
+
+    public void setDeparture_name(String departure_name) {
+        this.departure_name = departure_name;
+    }
+
+    public void setDestination_name(String destination_name) {
+        this.destination_name = destination_name;
+    }
+
+    public void setFlight_date(String flight_date) {
+        this.flight_date = flight_date;
     }
 }
