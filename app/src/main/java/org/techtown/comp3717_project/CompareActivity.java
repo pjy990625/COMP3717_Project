@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,7 +56,6 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
                 .commit();
     }
 
-
     public void submitTravelInfo(double price, ItineraryPriceMetric[] results) {
         Bundle bundle = new Bundle(); // create bundle to send result to the fragment
         if (results.length == 0) {
@@ -69,6 +67,9 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
             bundle.putString("medium", String.valueOf(medium));
             bundle.putString("isCheaper", price < medium ? "true" : "false");
             bundle.putString("currency", currency); // extract and convert the currency code to currency symbol
+            bundle.putString("departureDate", String.valueOf(results[0].getDepartureDate()));
+            bundle.putString("departureLocation", String.valueOf(results[0].getOrigin().getIataCode()));
+            bundle.putString("destinationLocation", String.valueOf(results[0].getDestination().getIataCode()));
             saveTicketResult(price, medium, currency);
         }
 

@@ -9,6 +9,12 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.amadeus.Amadeus;
+import com.amadeus.Params;
+import com.amadeus.exceptions.ResponseException;
+import com.amadeus.resources.FlightOfferSearch;
+
+import org.techtown.comp3717_project.BuildConfig;
 import org.techtown.comp3717_project.R;
 
 public class ViewTicketFragment extends Fragment {
@@ -25,7 +31,48 @@ public class ViewTicketFragment extends Fragment {
         TextView headingText = rootView.findViewById(R.id.ticketComparisonHeadingText);
         TextView resultText = rootView.findViewById(R.id.ticketComparisonResultText);
         ImageView resultImage = rootView.findViewById(R.id.ticketComparisonResultImage);
+        TextView option1Date = rootView.findViewById(R.id.date1);
+        TextView option2Date = rootView.findViewById(R.id.date2);
+        TextView option3Date = rootView.findViewById(R.id.date3);
+        TextView option1Time = rootView.findViewById(R.id.time1);
+        TextView option2Time = rootView.findViewById(R.id.time2);
+        TextView option3Time = rootView.findViewById(R.id.time3);
+        TextView option1Airline = rootView.findViewById(R.id.airline1);
+        TextView option2Airline = rootView.findViewById(R.id.airline2);
+        TextView option3Airline = rootView.findViewById(R.id.airline3);
+        TextView option1Price = rootView.findViewById(R.id.price1);
+        TextView option2Price = rootView.findViewById(R.id.price2);
+        TextView option3Price = rootView.findViewById(R.id.price3);
         Bundle bundle = getArguments();
+
+        Amadeus amadeus = Amadeus
+                .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+                .build();
+
+        try {
+            assert bundle != null;
+            FlightOfferSearch[] flightOffers = amadeus.shopping.flightOffersSearch.get(
+                    Params.with("originLocationCode", bundle.getString("departureLocation"))
+                            .and("destinationLocationCode", bundle.get("destinationLocation"))
+                            .and("departureDate",bundle.getString("departureDate"))
+                            .and("nonStop", true)
+                            .and("adults", 1));
+            option1Date.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getCarrierCode());
+            option1Time.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
+            option1Airline.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
+            option1Price.setText(String.format("$%s", flightOffers[0].getPrice().getTotal()));
+            option2Date.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getCarrierCode());
+            option2Time.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
+            option2Airline.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
+            option2Price.setText(String.format("$%s", flightOffers[1].getPrice().getTotal()));
+            option3Date.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getCarrierCode());
+            option3Time.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
+            option3Airline.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
+            option3Price.setText(String.format("$%s", flightOffers[2].getPrice().getTotal()));
+        } catch (ResponseException e) {
+            e.printStackTrace();
+        }
+
         // check whether isCheaper is unknown - if it is, that means there was no data retrieved from api
         if (bundle.getString("isCheaper").equals("unknown")) {
             headingText.setText(R.string.comparison_heading_unknown);
