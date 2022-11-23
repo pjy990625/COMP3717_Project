@@ -3,7 +3,6 @@ package org.techtown.comp3717_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -14,14 +13,18 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.net.PlacesClient;
+
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +34,9 @@ import java.util.concurrent.ExecutionException;
 public class SearchActivity extends AppCompatActivity {
 
     PlacesClient placesClient;
+    private SearchActivity myActivity = this;
+    private String url = "https://www.airport-data.com/api/ap_info.json?iata=";
+    private String link = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,16 +55,36 @@ public class SearchActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String keyword = s.toString();
                 if(!keyword.isEmpty()) {
-                    try {
-                        updateAirportList(AmadeusManager.getManager().getAirports(keyword));
-                    } catch (ResponseException e) {
-                        Log.d("Amadeus", e.toString());
-                    } catch (ExecutionException | InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    searchAirports(keyword);
                 }
             }
         });
+    }
+
+    private void searchAirports(String keyword) {
+        new Thread() {
+            public void run() {
+                try {
+                    Location locations[] = AmadeusManager.getManager().getAirports(keyword);
+                    myActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                updateAirportList(locations);
+                            } catch (ResponseException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (ResponseException e) {
+                    Log.d("Amadeus", e.toString());
+                }
+            }
+        }.start();
     }
 
     void updateAirportList(Location[] locations) throws ResponseException, ExecutionException, InterruptedException {
@@ -76,8 +102,10 @@ public class SearchActivity extends AppCompatActivity {
         list.setOnItemClickListener((adapterView, view1, i, l) -> {
             Intent intent = new Intent(adapterView.getContext(), InfoActivity.class);
             Bundle bundle = new Bundle();
+
             bundle.putString("Airport", locations[i].getName() + " ("
                     + locations[i].getIataCode() + ")");
+
             MapAsyncTask task = new MapAsyncTask();
             try {
                 List<Address> addresses = task.execute(locations[i].getIataCode() + " airport").get();
@@ -120,12 +148,33 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     }
                 }
+                String tempUrl = url + locations[i].getIataCode();
+                MyAsyncTask myAsyncTask = new MyAsyncTask();
+                myAsyncTask.execute(tempUrl);
+                System.out.println(link);
+                bundle.putString("Link", link);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
             startActivity(intent);
         });
+    }
+
+    private class MyAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            RequestQueue queue = Volley.newRequestQueue(myActivity);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, response -> {
+                try {
+                    link = response.getString("link");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }, error -> Toast.makeText(myActivity, error.toString(), Toast.LENGTH_SHORT).show());
+            queue.add(request);
+            return null;
+        }
     }
 
     class MapAsyncTask extends AsyncTask<String, LatLng, List<Address>> {
