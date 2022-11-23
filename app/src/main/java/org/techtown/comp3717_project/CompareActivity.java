@@ -1,8 +1,10 @@
 package org.techtown.comp3717_project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -111,5 +113,23 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
 
     public void setFlight_date(String flight_date) {
         this.flight_date = flight_date;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.ticket_fragment_frame, settingFragment).commit();
+            return true;
+        }
+        return false;
     }
 }
