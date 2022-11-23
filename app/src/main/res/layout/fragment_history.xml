@@ -29,11 +29,10 @@
             android:layout_height="match_parent"
             android:gravity="center">
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="300dp"
-                android:layout_height="450dp"
-                android:background="@color/blue_200" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/historyView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </TableRow>
 
     </TableLayout>
