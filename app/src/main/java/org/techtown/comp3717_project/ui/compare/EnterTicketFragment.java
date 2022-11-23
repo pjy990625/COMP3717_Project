@@ -107,14 +107,17 @@ public class EnterTicketFragment extends Fragment {
         if (isDeparture) {
             button_departure.setText(name);
             departureIATA = IATA;
+            compareActivity.setDeparture_name(name);
         } else {
             button_destination.setText(name);
             destinationIATA = IATA;
+            compareActivity.setDestination_name(name);
         }
     }
 
     public void setDate(int year, int month, int day) {
         date = year + "-" + String.format(Locale.getDefault(), "%02d", month) + "-" + String.format(Locale.getDefault(), "%02d", day);
         button_date.setText(date);
+        compareActivity.setFlight_date(date);
     }
 }

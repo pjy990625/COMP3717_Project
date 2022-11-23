@@ -1,6 +1,5 @@
 package org.techtown.comp3717_project.ui.compare;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
