@@ -54,6 +54,9 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
             bundle.putString("medium", String.valueOf(medium));
             bundle.putString("isCheaper", price < medium ? "true" : "false");
             bundle.putString("currency", Currency.getInstance(results[0].getCurrencyCode()).getSymbol()); // extract and convert the currency code to currency symbol
+            bundle.putString("departureDate", String.valueOf(results[0].getDepartureDate()));
+            bundle.putString("departureLocation", String.valueOf(results[0].getOrigin().getIataCode()));
+            bundle.putString("destinationLocation", String.valueOf(results[0].getDestination().getIataCode()));
         }
         fragmentViewTicket.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
