@@ -34,13 +34,13 @@ public class HistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_history, container, false);
-        Context context = getContext();
+        Context context = rootView.getContext();
         SharedPreferences prefs = context.getSharedPreferences("history", Context.MODE_PRIVATE);
         Set<String> historySet = prefs.getStringSet("history", new HashSet<>());
         RecyclerView recyclerView = rootView.findViewById(R.id.historyView);
         HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(context, historySet);
-        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
         Log.d("TAG", String.valueOf(historySet.size()));
         return rootView;
     }
