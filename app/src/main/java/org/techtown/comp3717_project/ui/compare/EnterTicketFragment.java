@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +34,7 @@ public class EnterTicketFragment extends Fragment {
     String destinationIATA = "";
 
     String date = "";
-    String[] currency = {"USD", "CAD", "EUR", "JPY"}; // bound to strings/currencies - make sure the orders match
+    String[] currency = {"USD", "CAD", "EUR", "CNY", "JPY"}; // bound to strings/currencies - make sure the orders match
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,14 +106,17 @@ public class EnterTicketFragment extends Fragment {
         if (isDeparture) {
             button_departure.setText(name);
             departureIATA = IATA;
+            compareActivity.setDeparture_name(name);
         } else {
             button_destination.setText(name);
             destinationIATA = IATA;
+            compareActivity.setDestination_name(name);
         }
     }
 
     public void setDate(int year, int month, int day) {
         date = year + "-" + String.format(Locale.getDefault(), "%02d", month) + "-" + String.format(Locale.getDefault(), "%02d", day);
         button_date.setText(date);
+        compareActivity.setFlight_date(date);
     }
 }

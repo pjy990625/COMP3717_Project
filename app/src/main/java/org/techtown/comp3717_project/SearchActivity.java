@@ -2,10 +2,10 @@ package org.techtown.comp3717_project;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -13,12 +13,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.android.volley.Request;
@@ -32,6 +34,11 @@ import com.google.android.libraries.places.api.model.PhotoMetadata;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import org.techtown.comp3717_project.ui.history.HistoryFragment;
+import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,14 +48,25 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     String url;
+    PlacesClient placesClient;
+    BottomNavigationView bottomNavigationView;
+    Amadeus amadeus;
+    HistoryFragment historyFragment = new HistoryFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnItemSelectedListener(this);
+
+        amadeus = Amadeus
+                .builder(BuildConfig.API_KEY, BuildConfig.API_SECRET)
+                .build();
 
         EditText input = findViewById(R.id.editTextAirportName);
         input.addTextChangedListener(new TextWatcher() {
@@ -75,8 +93,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     void updateAirportList(Location[] locations) throws ResponseException, ExecutionException, InterruptedException {
-        ArrayList<String> listItems = new ArrayList<String>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayList<String> listItems = new ArrayList<>();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 listItems);
         ListView list = findViewById(R.id.airportList);
@@ -122,11 +140,11 @@ public class SearchActivity extends AppCompatActivity {
                         if (addresses.get(0).getLocality() != null) {
                             bundle.putString("Location",
                                     addresses.get(0).getLocality() + ", " + addresses.get(0).getAdminArea()
-                                    + ", " + addresses.get(0).getCountryName());
+                                            + ", " + addresses.get(0).getCountryName());
                         } else if (addresses.get(0).getSubLocality() != null) {
                             bundle.putString("Location",
                                     addresses.get(0).getSubLocality() + ", " + addresses.get(0).getAdminArea()
-                                    + ", " + addresses.get(0).getCountryName());
+                                            + ", " + addresses.get(0).getCountryName());
                         } else {
                             bundle.putString("Location", locations[i].getAddress().getCityName() + ", " +
                                     locations[i].getAddress().getCountryName());
@@ -158,4 +176,23 @@ public class SearchActivity extends AppCompatActivity {
             return addresses;
         }
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.search_container, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.search_container, settingFragment).commit();
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -48,6 +48,7 @@
         <item>USD</item>
         <item>CAD</item>
         <item>Euro</item>
+        <item>Yuan</item>
         <item>Yen</item>
     </string-array>
     <string name="class_label">Class</string>
@@ -67,6 +68,15 @@
     <string name="comparison_result_unknown">We couldn\'t find data to compare your ticket price…</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">cancel</string>
-    <string name="to_website">Go To Website</string>
+    <string name="preference_file_key">SaveAir</string>
+    <string name="not_available">N/A</string>
+    <string name="history_template">Your ticket at %1$s was %2$s than the average market price of %3$s.</string>
+    <string name="avatar">avatar</string>
+    <string name="my_passport">My Passport</string>
+    <string name="my_tickets">My Tickets</string>
+    <string name="add_a_traveler">Add a Traveler</string>
+    <string name="price_alerts">Price Alerts</string>
+    <string name="user">User</string>
+    <string name="log_out">Log out</string>
 
 </resources>

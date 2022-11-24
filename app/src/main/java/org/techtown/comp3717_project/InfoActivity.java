@@ -2,6 +2,7 @@ package org.techtown.comp3717_project;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,21 +37,38 @@ import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
 
 import java.util.Collections;
 import java.util.List;
+import android.view.MenuItem;
+import android.widget.TextView;
 
-public class InfoActivity extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
+import org.techtown.comp3717_project.ui.history.HistoryFragment;
+import org.techtown.comp3717_project.ui.setting.SettingFragment;
+public class InfoActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
     PlacesClient placesClient;
+    HistoryFragment historyFragment = new HistoryFragment();
+    SettingFragment settingFragment = new SettingFragment();
+    BottomNavigationView bottomNavigationView;
+
     RecyclerView items, services;
     String[] itemNames, serviceNames;
     int[] dutyFreeIcons = {R.drawable.ic_baseline_smoking_rooms_24,
             R.drawable.ic_baseline_local_drink_24, R.drawable.ic_baseline_shopping_cart_24};
     int[] servicesIcons = {R.drawable.ic_baseline_car_rental_24, R.drawable.ic_baseline_hotel_24,
             R.drawable.ic_baseline_local_taxi_24};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Places.initialize(this, BuildConfig.MAPS_API_KEY);
         placesClient = Places.createClient(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+        bottomNavigationView.setOnItemSelectedListener(this);
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String airportName = bundle.getString("Airport");
@@ -137,5 +155,22 @@ public class InfoActivity extends AppCompatActivity {
             queue.add(request);
             return "Task Completed";
         }
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.navigation_home) {
+            Intent switchActivityIntent = new Intent(this, MainActivity.class);
+            startActivity(switchActivityIntent);
+            return true;
+        } else if (item.getItemId() == R.id.navigation_history) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.info_container, historyFragment).commit();
+            return true;
+        } else if (item.getItemId() == R.id.navigation_setting) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.info_container, settingFragment).commit();
+            return true;
+        }
+        return false;
     }
 }
