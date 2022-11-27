@@ -1,7 +1,5 @@
 package org.techtown.comp3717_project;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +12,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,14 +22,9 @@ import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.PhotoMetadata;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -40,12 +32,10 @@ import com.google.android.material.navigation.NavigationBarView;
 import org.techtown.comp3717_project.ui.history.HistoryFragment;
 import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 public class SearchActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
@@ -55,6 +45,9 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
     Amadeus amadeus;
     HistoryFragment historyFragment = new HistoryFragment();
     SettingFragment settingFragment = new SettingFragment();
+    private SearchActivity myActivity = this;
+    private String apiurl = "https://www.airport-data.com/api/ap_info.json?iata=";
+    private String link = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,16 +73,36 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
             public void afterTextChanged(Editable s) {
                 String keyword = s.toString();
                 if(!keyword.isEmpty()) {
-                    try {
-                        updateAirportList(AmadeusManager.getManager().getAirports(keyword));
-                    } catch (ResponseException e) {
-                        Log.d("Amadeus", e.toString());
-                    } catch (ExecutionException | InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    searchAirports(keyword);
                 }
             }
         });
+    }
+
+    private void searchAirports(String keyword) {
+        new Thread() {
+            public void run() {
+                try {
+                    Location locations[] = AmadeusManager.getManager().getAirports(keyword);
+                    myActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                updateAirportList(locations);
+                            } catch (ResponseException e) {
+                                e.printStackTrace();
+                            } catch (ExecutionException e) {
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                } catch (ResponseException e) {
+                    Log.d("Amadeus", e.toString());
+                }
+            }
+        }.start();
     }
 
     void updateAirportList(Location[] locations) throws ResponseException, ExecutionException, InterruptedException {
@@ -107,8 +120,10 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
         list.setOnItemClickListener((adapterView, view1, i, l) -> {
             Intent intent = new Intent(adapterView.getContext(), InfoActivity.class);
             Bundle bundle = new Bundle();
+
             bundle.putString("Airport", locations[i].getName() + " ("
                     + locations[i].getIataCode() + ")");
+
             MapAsyncTask task = new MapAsyncTask();
             try {
                 List<Address> addresses = task.execute(locations[i].getIataCode() + " airport").get();
@@ -155,12 +170,32 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
                         + addresses.get(0).getLatitude() + ", " + addresses.get(0).getLongitude()
                         + "&key=" + BuildConfig.MAPS_API_KEY;
                 bundle.putString("url", url);
+                String tempUrl = apiurl + locations[i].getIataCode();
+                MyAsyncTask myAsyncTask = new MyAsyncTask();
+                myAsyncTask.execute(tempUrl);
+                bundle.putString("Link", link);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
             }
             startActivity(intent);
         });
+    }
+
+    private class MyAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            RequestQueue queue = Volley.newRequestQueue(myActivity);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, response -> {
+                try {
+                    link = response.getString("link");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }, error -> Toast.makeText(myActivity, error.toString(), Toast.LENGTH_SHORT).show());
+            queue.add(request);
+            return null;
+        }
     }
 
     class MapAsyncTask extends AsyncTask<String, LatLng, List<Address>> {
