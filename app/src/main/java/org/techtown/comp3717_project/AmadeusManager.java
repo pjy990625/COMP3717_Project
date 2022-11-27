@@ -45,7 +45,6 @@ public class AmadeusManager {
      * @param departure IATA code of the departure airport.
      * @param destination IATA code of the destination airport.
      * @param date Date of departure in the format of "yyyy-mm-dd".
-     * @param price Price of the ticket.
      * @param currency Currency code.
      * @param isOneWay Whether the trip is a one way trip or not.
      */
