@@ -4,6 +4,7 @@ import android.os.StrictMode;
 
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
+import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.ItineraryPriceMetric;
 import com.amadeus.resources.Location;
 
@@ -55,6 +56,22 @@ public class AmadeusManager {
                 .and("departureDate", date)
                 .and("currencyCode", currency)
                 .and("oneWay", isOneWay ? "true" : "false"));
+    }
+
+    /**
+     * Searches for flight offers with corresponding departure, destination and date.
+     *
+     * @param departure IATA code of the departure airport.
+     * @param destination IATA code of the destination airport.
+     * @param date Date of departure in the format of "yyyy-mm-dd".
+     */
+    public FlightOfferSearch[] getFlightOffers(String departure, String destination, String date) throws ResponseException {
+        return amadeus.shopping.flightOffersSearch.get(Params
+                .with("originLocationCode", departure)
+                .and("destinationLocationCode", destination)
+                .and("departureDate", date)
+                .and("nonStop", true)
+                .and("adults", 1));
     }
 
 }

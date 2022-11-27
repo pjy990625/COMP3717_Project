@@ -92,9 +92,8 @@ public class CompareActivity extends AppCompatActivity implements NavigationBarV
             JSONObject json = new JSONObject();
             json.put("ticketPrice", "Your ticket: " + currency + price);
             json.put("marketPrice", "Market price: " + currency + medium);
-            json.put("departure", "Departure: " + departure_name);
-            json.put("destination", "Destination: " + destination_name);
-            json.put("date", "Date: " + flight_date);
+            json.put("route", "from " + departure_name + "\nto " + destination_name);
+            json.put("date", flight_date);
             historyList.add(json.toString());
         } catch (JSONException e) {
             e.printStackTrace();

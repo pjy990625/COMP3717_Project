@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import org.techtown.comp3717_project.R;
 
@@ -37,11 +39,24 @@ public class HistoryFragment extends Fragment {
         Context context = rootView.getContext();
         SharedPreferences prefs = context.getSharedPreferences("history", Context.MODE_PRIVATE);
         Set<String> historySet = prefs.getStringSet("history", new HashSet<>());
-        RecyclerView recyclerView = rootView.findViewById(R.id.historyView);
-        HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(context, historySet);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.setAdapter(adapter);
-        Log.d("TAG", String.valueOf(historySet.size()));
+        Button reset = rootView.findViewById(R.id.resetHistory);
+        TextView ph = rootView.findViewById(R.id.historyPlaceholder);
+        if (historySet.size() > 0) {
+            ph.setVisibility(View.GONE);
+            RecyclerView recyclerView = rootView.findViewById(R.id.historyView);
+            HistoryRecyclerViewAdapter adapter = new HistoryRecyclerViewAdapter(context, historySet);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.setAdapter(adapter);
+            reset.setOnClickListener(v -> {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.clear().apply();
+                recyclerView.setVisibility(View.GONE);
+                reset.setVisibility(View.GONE);
+                ph.setVisibility(View.VISIBLE);
+            });
+        } else {
+            reset.setVisibility(View.GONE);
+        }
         return rootView;
     }
 }

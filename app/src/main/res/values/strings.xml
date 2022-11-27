@@ -32,7 +32,8 @@
     <string name="ticket_details">Ticket details page</string>
     <string name="ticket_info">Your ticket is …</string>
     <string name="ticket_price">than the average market price of $1000</string>
-    <string name="other_tickets">Other tickets with similar conditions</string>
+    <string name="other_tickets">Other tickets with similar conditions:</string>
+    <string name="other_tickets_unavailable">To see other tickets with similar conditions, try again with future dates.</string>
     <string name="submit">Submit</string>
     <string name="a">A</string>
     <string name="b">B</string>
@@ -48,7 +49,6 @@
         <item>USD</item>
         <item>CAD</item>
         <item>Euro</item>
-        <item>Yuan</item>
         <item>Yen</item>
     </string-array>
     <string name="class_label">Class</string>
@@ -60,6 +60,7 @@
     </string-array>
     <string name="stops">Stops</string>
     <string name="your_history">Your History</string>
+    <string name="history_placeholder">No record to display</string>
 
     <string name="dialog_main_message">Select the Airport you %1$s at</string>
     <string name="comparison_heading_message">Your ticket at %1$s is…</string>
@@ -71,6 +72,7 @@
     <string name="preference_file_key">SaveAir</string>
     <string name="not_available">N/A</string>
     <string name="history_template">Your ticket at %1$s was %2$s than the average market price of %3$s.</string>
+    <string name="reset">Reset</string>
     <string name="avatar">avatar</string>
     <string name="my_passport">My Passport</string>
     <string name="my_tickets">My Tickets</string>

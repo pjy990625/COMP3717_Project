@@ -40,7 +40,9 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
         try {
             JSONObject json = new JSONObject(items.get(position));
             holder.textView_ticketPrice.setText(json.getString("ticketPrice"));
-            holder.textView_ticketPrice.setText(json.getString("marketPrice"));
+            holder.textView_marketPrice.setText(json.getString("marketPrice"));
+            holder.textView_route.setText(json.getString("route"));
+            holder.textView_ticketDate.setText(json.getString("date"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -55,11 +57,15 @@ public class HistoryRecyclerViewAdapter extends RecyclerView.Adapter<HistoryRecy
 
         TextView textView_ticketPrice;
         TextView textView_marketPrice;
+        TextView textView_route;
+        TextView textView_ticketDate;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_ticketPrice = itemView.findViewById(R.id.ticketPrice);
             textView_marketPrice = itemView.findViewById(R.id.marketPrice);
+            textView_route = itemView.findViewById(R.id.route);
+            textView_ticketDate = itemView.findViewById(R.id.ticketDate);
         }
     }
 }
