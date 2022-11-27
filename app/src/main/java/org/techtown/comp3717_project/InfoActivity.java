@@ -7,16 +7,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.AsyncQueryHandler;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.net.Uri;
 import android.os.Bundle;
-import android.service.controls.ControlsProviderService;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,12 +38,10 @@ import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
 import java.util.Collections;
 import java.util.List;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import org.techtown.comp3717_project.adapters.ItemsMyRecyclerAdapter;
 import org.techtown.comp3717_project.ui.history.HistoryFragment;
 import org.techtown.comp3717_project.ui.setting.SettingFragment;
 public class InfoActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
@@ -51,7 +49,7 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
     HistoryFragment historyFragment = new HistoryFragment();
     SettingFragment settingFragment = new SettingFragment();
     BottomNavigationView bottomNavigationView;
-
+    private String link = "";
     RecyclerView items, services;
     String[] itemNames, serviceNames;
     int[] dutyFreeIcons = {R.drawable.ic_baseline_smoking_rooms_24,
@@ -94,6 +92,18 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
         services.setAdapter(itemsMyRecyclerAdapter2);
         services.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, false));
+
+        String airportLink = bundle.getString("Link");
+        this.link = airportLink;
+        TextView linkView = findViewById(R.id.website);
+
+        linkView.setOnClickListener(v -> {
+            if (link.compareTo("") != 0) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+            } else {
+                Toast.makeText(this, "Sorry, link not available", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     class PhotoAsyncTask extends AsyncTask<String, String, String> {
@@ -156,6 +166,7 @@ public class InfoActivity extends AppCompatActivity implements NavigationBarView
             return "Task Completed";
         }
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.navigation_home) {
