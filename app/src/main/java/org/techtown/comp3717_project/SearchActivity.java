@@ -1,5 +1,7 @@
 package org.techtown.comp3717_project;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +23,16 @@ import android.widget.Toast;
 import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.PhotoMetadata;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -29,13 +40,16 @@ import com.google.android.material.navigation.NavigationBarView;
 import org.techtown.comp3717_project.ui.history.HistoryFragment;
 import org.techtown.comp3717_project.ui.setting.SettingFragment;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
 public class SearchActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
-
+    String url;
     PlacesClient placesClient;
     BottomNavigationView bottomNavigationView;
     Amadeus amadeus;
@@ -137,6 +151,10 @@ public class SearchActivity extends AppCompatActivity implements NavigationBarVi
                         }
                     }
                 }
+                url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="
+                        + addresses.get(0).getLatitude() + ", " + addresses.get(0).getLongitude()
+                        + "&key=" + BuildConfig.MAPS_API_KEY;
+                bundle.putString("url", url);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
                 e.printStackTrace();
