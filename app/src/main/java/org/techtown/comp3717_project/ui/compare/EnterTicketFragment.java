@@ -90,7 +90,7 @@ public class EnterTicketFragment extends Fragment {
             try {
                 double price = Double.parseDouble(priceStr);
                 Spinner currencySpinner = rootView.findViewById(R.id.currencySpinner);
-                compareActivity.submitTravelInfo(price, AmadeusManager.getManager().getTicketPriceAnalysis(departureIATA, destinationIATA, date, price, currency[currencySpinner.getSelectedItemPosition()], false));
+                compareActivity.submitTravelInfo(price, AmadeusManager.getManager().getTicketPriceAnalysis(departureIATA, destinationIATA, date, currency[currencySpinner.getSelectedItemPosition()], false));
             } catch (ResponseException e) {
                 Log.d("Amadeus", e.toString());
             }

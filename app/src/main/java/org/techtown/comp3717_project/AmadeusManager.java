@@ -49,7 +49,7 @@ public class AmadeusManager {
      * @param currency Currency code.
      * @param isOneWay Whether the trip is a one way trip or not.
      */
-    public ItineraryPriceMetric[] getTicketPriceAnalysis(String departure, String destination, String date, double price, String currency, boolean isOneWay) throws ResponseException {
+    public ItineraryPriceMetric[] getTicketPriceAnalysis(String departure, String destination, String date, String currency, boolean isOneWay) throws ResponseException {
         return amadeus.analytics.itineraryPriceMetrics.get(Params
                 .with("originIataCode", departure)
                 .and("destinationIataCode", destination)
