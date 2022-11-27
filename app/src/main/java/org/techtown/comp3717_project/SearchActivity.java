@@ -151,7 +151,6 @@ public class SearchActivity extends AppCompatActivity {
                 String tempUrl = url + locations[i].getIataCode();
                 MyAsyncTask myAsyncTask = new MyAsyncTask();
                 myAsyncTask.execute(tempUrl);
-                System.out.println(link);
                 bundle.putString("Link", link);
                 intent.putExtras(bundle);
             } catch (ExecutionException | InterruptedException e) {
