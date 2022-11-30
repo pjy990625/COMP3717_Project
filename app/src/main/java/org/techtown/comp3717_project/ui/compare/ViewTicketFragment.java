@@ -16,6 +16,9 @@ import com.amadeus.resources.FlightOfferSearch;
 import org.techtown.comp3717_project.AmadeusManager;
 import org.techtown.comp3717_project.R;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class ViewTicketFragment extends Fragment {
 
     @Override
@@ -70,18 +73,33 @@ public class ViewTicketFragment extends Fragment {
         TextView option1Price = rootView.findViewById(R.id.price1);
         TextView option2Price = rootView.findViewById(R.id.price2);
         TextView option3Price = rootView.findViewById(R.id.price3);
-        option1Date.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getCarrierCode());
+
+        option1Date.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
         option1Time.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
-        option1Airline.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
+        option1Airline.setText(flightOffers[0].getItineraries()[0].getSegments()[0].getCarrierCode());
         option1Price.setText(String.format("$%s", flightOffers[0].getPrice().getTotal()));
-        option2Date.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getCarrierCode());
-        option2Time.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
-        option2Airline.setText(flightOffers[1].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
-        option2Price.setText(String.format("$%s", flightOffers[1].getPrice().getTotal()));
-        option3Date.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getCarrierCode());
-        option3Time.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1]);
-        option3Airline.setText(flightOffers[2].getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0]);
-        option3Price.setText(String.format("$%s", flightOffers[2].getPrice().getTotal()));
+
+        for (FlightOfferSearch flightOffer : flightOffers) {
+            String date = flightOffer.getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[0];
+            String time = flightOffer.getItineraries()[0].getSegments()[0].getDeparture().getAt().split("T")[1];
+            String airline = flightOffer.getItineraries()[0].getSegments()[0].getCarrierCode();
+            String price = flightOffer.getPrice().getTotal();
+
+            if (option2Price.getText().equals("N/A") && !option1Airline.getText().equals(airline)) {
+                option2Date.setText(date);
+                option2Time.setText(time);
+                option2Airline.setText(airline);
+                option2Price.setText(String.format("$%s", price));
+            }
+            if (!option2Price.getText().equals("N/A") && option3Price.getText().equals("N/A")
+                    && !option1Airline.getText().equals(airline)
+                    && !option2Airline.getText().equals(airline)) {
+                option3Date.setText(date);
+                option3Time.setText(time);
+                option3Airline.setText(airline);
+                option3Price.setText(String.format("$%s", price));
+            }
+        }
         return rootView;
     }
 

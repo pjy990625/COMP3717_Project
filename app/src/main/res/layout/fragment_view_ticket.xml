@@ -50,7 +50,7 @@
                     android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/date1"
+                            android:id="@+id/airline1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
@@ -70,7 +70,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/airline1"
+                            android:id="@+id/date1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="2"
@@ -102,7 +102,7 @@
                     android:layout_height="match_parent" >
 
                         <TextView
-                            android:id="@+id/date2"
+                            android:id="@+id/airline2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
@@ -122,7 +122,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/airline2"
+                            android:id="@+id/date2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="2"
@@ -130,6 +130,7 @@
                             android:layout_marginTop="30dp"
                             android:text="@string/not_available"
                             android:textSize="18sp" />
+
                 </TableRow>
 
                 <TableRow
@@ -154,7 +155,7 @@
                     android:layout_height="match_parent" >
 
                         <TextView
-                            android:id="@+id/date3"
+                            android:id="@+id/airline3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="0"
@@ -174,7 +175,7 @@
                             android:textSize="18sp" />
 
                         <TextView
-                            android:id="@+id/airline3"
+                            android:id="@+id/date3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_column="2"
